@@ -14,6 +14,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/store', "Stores");
     Route::get('/blogs', "Blogs");
     Route::get('/categories', "Categories");
+    Route::get('/store-profile', "StoreProfile");
 
 });
 

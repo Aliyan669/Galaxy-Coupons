@@ -22,4 +22,9 @@ class HomeController extends Controller
     {
         return view('pages.frontend.categories');
     }
+
+    public function StoreProfile()
+    {
+        return view('pages.frontend.store_profile');
+    }
 }

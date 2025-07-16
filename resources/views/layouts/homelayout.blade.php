@@ -41,7 +41,8 @@
                             <div class="header-content clearfix">
                                 <h1 id="logo" class="rs">
                                     <a href="/">
-                                        <img style="max-width:50%" src="{{ asset('frontend/images/galaxylogo.png')}}" alt="$SITE_NAME" />
+                                        <img style="max-width:50%" src="{{ asset('frontend/images/galaxylogo.png')}}"
+                                            alt="$SITE_NAME" />
                                     </a>
                                 </h1>
                                 <a id="sys_head_login" style="color: #6375ff;"
@@ -51,14 +52,14 @@
                                         <li class="{{ Request::is('/') ? 'active' : '' }}">
                                             <a href="/">Home</a>
                                         </li>
-                                        <li class="{{ Request::is('/store') ? 'active' : '' }}">
+                                        <li class="{{ Request::is('store') ? 'active' : '' }}">
                                             <a href="/store">Stores</a>
                                         </li>
 
-                                        <li class="{{ Request::is('/blogs') ? 'active' : '' }}">
+                                        <li class="{{ Request::is('blogs') ? 'active' : '' }}">
                                             <a href="/blogs">Blogs</a>
                                         </li>
-                                        <li class="{{ Request::is('/categories') ? 'active' : '' }}">
+                                        <li class="{{ Request::is('categories') ? 'active' : '' }}">
                                             <a href="/categories">Categories</a>
                                         </li>
                                     </ul>
