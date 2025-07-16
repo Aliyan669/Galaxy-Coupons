@@ -1,6 +1,9 @@
 a{
 	color: #ffffff;
 }
+.page-num{
+	color: #9e9d9d;
+}
 /*		Theme-gray     */
 .gray .container-page{
 	background:  url(../images/pattern.png) ;
@@ -117,7 +120,7 @@ a{
 	display: none;
 }
 .gray .block .title-block{
-	color: #596cfb;
+	color: #2D4255;
 }
 .gray .wrap-brand-logo{
 	display: table;
@@ -157,7 +160,7 @@ a{
 	background-color: #fff; 
 }
 .gray .coupon-item:hover .coupon-content,.gray .coupons-code-item:hover{
-	border-color:#FFBE19;
+	border-color:#929ffb;
 }
 .gray .img-thumb-center{
 	background-color: #fff;
@@ -166,7 +169,7 @@ a{
 	margin-top: 6px;
 }
 .gray .coupon-item .coupon-price:hover{
-    color: #FF8317;
+    color: #6375ff;
 }
 .gray .coupon-item .btn-take-coupon.dismiss{
 	background-color: #FFBE19;
@@ -185,7 +188,7 @@ a{
 	background-color: #fff;
 }
 .gray .mod-list-store .wrap-list-store .brand-logo:hover{
-	border-color: #FFBE19;
+	border-color: #929ffb;
 }
 .gray .sidebar .coupons-code-item .brand-logo{
 	background-color: transparent;
@@ -195,7 +198,7 @@ a{
 	background-color: #fff;
 }
 .gray .coupon-item .coupon-price{
-	color: #04BFBF;
+	color: #3b444b;
 }
 /*.gray .coupon-item:hover .coupon-price{
 	color: #FF8317;
@@ -271,7 +274,7 @@ p,.gray .article-item .art-desc{
 	background-color: #FF8317;
 }
 .gray .article-item .date{
-	background-color: #04BFBF;
+	background-color: #6375ff;
 }
 .gray .article-item .date .day,.gray .article-item .date .my{
 	color: #fff;
@@ -316,17 +319,17 @@ p,.gray .article-item .art-desc{
 	color: #A6A6A6;
 }
 .gray .mod-brand-alphabetical .list-follow a{
-	color: #04BFBF;
+	color: #6375ff;
 }
 .wrap-list-char a:hover{
 	text-decoration: none;
 	color: #FEBD00;
 }
 .gray .mod-brand-alphabetical .alphabe a{
-	color: #04BFBF;
+	color: #6375ff;
 }
 .gray .mod-brand-alphabetical .alphabe a.disable{
-	color: #FEBD00;
+	color: #656565;
 }
 /*	brand info   */
 .gray .mod-brand-detail-2 .brand-info-right,.gray .mod-brand-detail-5 .brand-info-right{
@@ -368,10 +371,10 @@ p,.gray .article-item .art-desc{
 
 .gray .pagination .page-num.active,
 .gray .pagination .page-num:hover{
-	border-color: #04BFBF;
+	border-color: #6375ff;
 }
 .gray .pagination .page-num.active{
-	background-color: #04BFBF;
+	background-color: #6375ff;
 }
 .gray .pagination .page-num a{
 	color: #666;
@@ -388,5 +391,5 @@ p,.gray .article-item .art-desc{
 	border-color: #BBBBBB;
 }
 .gray .pagination .txt-nav:hover{
-	border-color: #04BFBF;
+	border-color: #6375ff;
 }

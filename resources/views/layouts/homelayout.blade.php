@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Home</title>
+    <title>Galaxy Coupon</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="{{ asset('frontend/css/font.css')}}" />
@@ -41,22 +41,24 @@
                             <div class="header-content clearfix">
                                 <h1 id="logo" class="rs">
                                     <a href="/">
-                                        <img src="{{ asset('frontend/images/galaxylogo.png')}}" alt="$SITE_NAME" />
+                                        <img style="max-width:50%" src="{{ asset('frontend/images/galaxylogo.png')}}" alt="$SITE_NAME" />
                                     </a>
                                 </h1>
                                 <a id="sys_head_login" style="color: #6375ff;"
                                     class="btn btn-green type-login btn-login" href="#">Login</a>
                                 <nav class="main-nav">
                                     <ul id="main-menu" class="nav nav-horizontal clearfix">
-                                        <li class="active">
+                                        <li class="{{ Request::is('/') ? 'active' : '' }}">
                                             <a href="/">Home</a>
                                         </li>
-                                        <li>
+                                        <li class="{{ Request::is('/store') ? 'active' : '' }}">
                                             <a href="/store">Stores</a>
                                         </li>
 
-                                        <li><a href="/blogs">Blogs</a></li>
-                                        <li>
+                                        <li class="{{ Request::is('/blogs') ? 'active' : '' }}">
+                                            <a href="/blogs">Blogs</a>
+                                        </li>
+                                        <li class="{{ Request::is('/categories') ? 'active' : '' }}">
                                             <a href="/categories">Categories</a>
                                         </li>
                                     </ul>
@@ -226,7 +228,7 @@
                             </div>
                             <div class="grid_3">
                                 <div class="block social-link">
-                                    <h3 class="title-block">Follow us</h3>
+                                    <h3 class="title-block" style="color:white;">Follow us</h3>
                                     <div class="block-content">
                                         <ul class="rs">
                                             <li>
@@ -247,7 +249,7 @@
                             </div><!--end: Follow us -->
                             <div class="grid_3">
                                 <div class="block intro-video">
-                                    <h3 class="title-block">Intro Video</h3>
+                                    <h3 class="title-block" style="color:white;">Intro Video</h3>
                                     <div class="block-content">
                                         <div class="wrap-video" id="sys_wrap_video">
                                             <div class="lightbox-video">
@@ -261,7 +263,7 @@
                             </div><!--end: Intro Video -->
                             <div class="grid_3">
                                 <div class="block blog-recent">
-                                    <h3 class="title-block">Latest blog</h3>
+                                    <h3 class="title-block" style="color:white;">Latest blog</h3>
                                     <div class="block-content">
                                         <div class="entry-item flex">
                                             <a class="thumb-left" href="#">

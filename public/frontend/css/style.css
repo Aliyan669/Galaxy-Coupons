@@ -52,7 +52,7 @@ ul.rs, ol.rs{
 
 img{
     /* Responsive images (ensure images don't scale beyond their parents) */
-    max-width: 50%;
+    max-width: 100%;
     /* Part 1: Set a maxium relative to the parent */
     /*width: auto\9; */
     /* IE7-8 need help adjusting responsive images */
@@ -1027,7 +1027,7 @@ b {
     -webkit-transition: color 0.3s;
 }
 .coupon-item:hover .coupon-price{
-    color: #FF8317;
+    color: #6375ff;
 }
 .coupon-item .coupon-brand{
     color: #777777;
@@ -1057,7 +1057,7 @@ b {
     -webkit-transition: color 0.3s;
 }
 .coupon-item:hover .time-left{
-    color: #FF8317;
+    color: #6375ff;
 }
 .coupon-item .btn-take-coupon{
     display: block;
@@ -1784,7 +1784,7 @@ b {
 --------------------------------------------------------------------------------*/
 .mod-head-slide{}
 .mod-head-slide .wrap-slide{
-    padding: 59px 6px 69px;
+    padding: 0px 0px 0px;
 }
 .mod-head-slide .wrap-slide > p.ta-c{
     padding: 0;
@@ -2029,7 +2029,7 @@ b {
 .mod-email-newsletter .left-lbl{
     float: left;
     position: relative;
-    background: #ff6666;
+    background: #6375ff;
     color: #ffffff;
     padding: 18px 16px 12px;
 }
@@ -2042,7 +2042,7 @@ b {
     height: 0;
     border-style: solid;
     border-width: 70px 50px 0 0;
-    border-color: #ff6666 transparent transparent transparent;
+    border-color: #6375ff transparent transparent transparent;
 }
 .mod-email-newsletter .left-lbl .big-lbl{
     font-size: 2.307692307692308em;
