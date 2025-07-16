@@ -1,5 +1,5 @@
 a{
-	color: #888888;
+	color: #ffffff;
 }
 /*		Theme-gray     */
 .gray .container-page{
@@ -10,18 +10,19 @@ a{
 }
 /*	header   */
 .gray .mod-header{
-	background-color: #fff;
+	background-color: #6375ff;
 	box-shadow:0 5px 3px rgba(0, 0, 0, 0.2); 
 }
 .gray #main-menu > li{
-    border-left-color:  #BBBBBB;
+    border-left-color:  #ffffff;
 }
 .gray #main-menu > li.has-sub > a:before{
-    border-color: #777777 transparent transparent transparent;
+    border-color: #ffffff transparent transparent transparent;
 }
 .gray #main-menu > li.active > a,
 .gray #main-menu > li > a:hover{
-    color: #04BFBF;
+    color: #ffffff;
+	font-weight: bold;
 }
 .gray #main-menu > li.has-sub:after,
 .gray .sub-menu > li > a,
@@ -30,7 +31,7 @@ a{
     background: #eee;
 }
 .gray #main-menu > li.has-sub:hover > a{
-    color: #04BFBF;
+    color: #969696;
 }
 .gray #main-menu > li.has-sub:hover,
 .gray #main-menu > li > .sub-menu,
@@ -42,7 +43,7 @@ a{
 }
 .gray .sub-menu > li > a:hover,
 .gray .select-cate .dropdown-cate{
-	color: #666;
+	color: #ffffff;
 }
 /*	search	*/
 .gray .mod-filter .txt-search{
@@ -63,7 +64,7 @@ a{
 .gray .mod-email-newsletter .wrap-email input:focus,
 .gray .mod-search .keyword-search:focus{
 	border-color: #22BFBF;
-	color: #777;
+	color: #ffffff;
 }
 .mod-email-newsletter .wrap-email input:focus,
 .gray .mod-search .keyword-search:focus{
@@ -71,7 +72,7 @@ a{
 }
 /*	filter   */
 .gray .range-days-left .lbl-day{
-	color: #777;
+	color: #ffffff;
 }
 .gray .select-cate .dropdown-cate,.gray .select-cate .show-val,.gray .select-cate .wrap-list-cate a{
 	background-color: #eee;
@@ -86,7 +87,7 @@ a{
 	background-color: #EEE;
 }
 .gray .noUi-connect,.gray .noUi-handle{
-	background-color: #17BFBF;
+	background-color: #6375ff;
 }
 /*	allType   */
 /*.gray .select-cate .dropdown-cate{
@@ -116,7 +117,7 @@ a{
 	display: none;
 }
 .gray .block .title-block{
-	color: #04BFBF;
+	color: #596cfb;
 }
 .gray .wrap-brand-logo{
 	display: table;
@@ -132,11 +133,11 @@ a{
 /*	social-link */
 .gray .mod-brand-detail-3 .social-link .fa,
 .gray .mod-footer .social-link ul i.fa{
-	color: #666;
+	color: #ffffff;
 }
 .gray .mod-brand-detail-3 .social-link .fa:hover,
 .gray .mod-footer .social-link ul i.fa:hover{
-	color: #bbb;
+	color: #ffffff;
 }
 
 
