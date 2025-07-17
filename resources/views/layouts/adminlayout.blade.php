@@ -10,6 +10,9 @@
     <title> Admin - Galaxy Coupon</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/app.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/bundles/datatables/datatables.min.css')}}">
+    <link rel="stylesheet"
+        href="{{ asset('backend/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')}}">
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css')}}">
@@ -360,13 +363,21 @@
     <!-- General JS Scripts -->
     <script src="{{ asset('backend/assets/js/app.min.js')}}"></script>
     <!-- JS Libraies -->
+    <script src="{{ asset('backend/assets/bundles/datatables/datatables.min.js')}}"></script>
+    <script
+        src="{{ asset('backend/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{ asset('backend/assets/bundles/jquery-ui/jquery-ui.min.js')}}"></script>
     <script src="{{ asset('backend/assets/bundles/apexcharts/apexcharts.min.js')}}"></script>
     <!-- Page Specific JS File -->
+    <script src="{{ asset('backend/assets/js/page/datatables.js')}}"></script>
     <script src="{{ asset('backend/assets/js/page/index.js')}}"></script>
     <!-- Template JS File -->
     <script src="{{ asset('backend/assets/js/scripts.js')}}"></script>
     <!-- Custom JS File -->
     <script src="{{ asset('backend/assets/js/custom.js')}}"></script>
+    <!-- JS Libraies -->
+
+
 </body>
 
 

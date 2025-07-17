@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -11,7 +11,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('pages.backend.allCategories');
+        $categories = DB::select("select * from categories");
+        return view('pages.backend.allCategories', compact('categories'));
     }
 
     /**
@@ -27,7 +28,20 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cate_name = $request->cate_name;
+        $meta_title = $request->meta_title;
+        $meta_desc = $request->meta_desc;
+
+        $logo = time() . '.' . $request->cate_logo->extension();
+        $request->cate_logo->move(public_path('backend/images/categories'), $logo);
+
+
+        DB::select('INSERT INTO `categories`(`cate_name`, `meta_title`, `meta_desc`, `cate_logo`, `created_at`, `updated_at`) VALUES ("' . $cate_name . '", "' . $meta_title . '" ,"' . $meta_desc . '" ,"' . $logo . '", CURRENT_TIMESTAMP, NULL);');
+
+        return redirect('/admin/categories/create')->with([
+            'message' => 'Categories added successfully!',
+            'type' => 'success'
+        ]);
     }
 
     /**
