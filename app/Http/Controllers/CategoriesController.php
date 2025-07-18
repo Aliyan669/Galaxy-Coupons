@@ -39,7 +39,7 @@ class CategoriesController extends Controller
         DB::select('INSERT INTO `categories`(`cate_name`, `meta_title`, `meta_desc`, `cate_logo`, `created_at`, `updated_at`) VALUES ("' . $cate_name . '", "' . $meta_title . '" ,"' . $meta_desc . '" ,"' . $logo . '", CURRENT_TIMESTAMP, NULL);');
 
         return redirect('/admin/categories/create')->with([
-            'message' => 'Categories added successfully!',
+            'message' => 'Categories added Successfully!',
             'type' => 'success'
         ]);
     }
@@ -57,7 +57,8 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = DB::select('select * from categories where id= "' . $id . '"');
+        return $data;
     }
 
     /**
@@ -65,7 +66,32 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $name = $request->e_cate_name;
+        $title = $request->e_meta_title;
+        $desc = $request->e_meta_desc;
+
+
+        $categories = DB::table('categories')->where('id', $id)->first();
+        if (!$categories) {
+            return response()->json(['error' => 'Categories not found'], 404);
+        }
+
+        // Image Upload Fix
+        if ($request->hasFile('e_cate_logo')) {
+            $editlogo = time() . '.' . $request->e_cate_logo->extension();
+            $request->e_cate_logo->move(public_path('backend/images/categories'), $editlogo);
+        } else {
+            $editlogo = $categories->cate_logo;
+        }
+
+
+        DB::select('UPDATE `categories` SET `cate_name`= "' . $name . '",`meta_title`= "' . $title . '",`meta_desc`= "' . $desc . '",`cate_logo`="' . $editlogo . '",`updated_at`= NOW() WHERE id = "' . $id . '"');
+
+
+        return redirect('/admin/categories/')->with(key: [
+            'message' => 'Categoires Updated successfully!',
+            'type' => 'success'
+        ]);
     }
 
     /**
@@ -74,6 +100,7 @@ class CategoriesController extends Controller
     public function destroy(string $id)
     {
         $deleted = DB::table('categories')->where('id', $id)->delete();
+
 
         if ($deleted) {
             return response()->json(['message' => 'Categories deleted successfully']);

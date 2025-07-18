@@ -172,7 +172,7 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="index.html">
+                        <a href="admin">
                             <img alt="image" src="{{ asset('backend/assets/img/galaxy-logo.png')}}"
                                 class="header-logo" />
                             <!-- <span class="logo-name font-15">Galaxy Coupons</span> -->

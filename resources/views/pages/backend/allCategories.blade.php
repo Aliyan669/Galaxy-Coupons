@@ -2,8 +2,71 @@
 @extends('layouts.adminlayout')
 
 @section('homeContent')
+        <!-- Large modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title ml-2" id="myLargeModalLabel">Edit Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                      <form enctype="multipart/form-data" class="form-sample p-2" id="updateForm">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="_method" value="PUT">
 
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-12">
 
+                    <div class="">
+
+                        <div class="">
+
+                       <input required type="hidden" id="e_id" name="e_id" class="form-control" />
+ 
+                            <div class="form-group">
+                                <label>Category Name</label>
+                                <input required name="e_cate_name" id="e_cate_name" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Meta Title</label>
+                                <input type="text" required name="e_meta_title" id="e_meta_title" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Meta Description</label>
+                                <input type="text"  required name="e_meta_desc" id="e_meta_desc" class="form-control">
+                            </div>
+
+                            <div class="section-title" style="font-size:12px; ">Category Logo</div>
+                            <div class="custom-file">
+                                <label>Meta Description</label>
+                                <input type="file" class="custom-file-input" name="e_cate_logo" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+
+                        </div>
+
+                        <div class="text-right mt-4">
+                            <button  class="btn btn-primary mr-1" type="submit" id="updateBtn">Save</button>
+                            <button class="btn btn-secondary" data-dismiss="modal" type="reset">Cancel</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -85,7 +148,7 @@
                             <td>{{ \Carbon\Carbon::parse($data->created_at)->format('Y-m-d') }}</td>
                             
                             <td><button type="button" class="btn btn btn-danger deleteBtn mr-3" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
-                            <a href="#" class="btn btn-success  ">Edit</a></td>
+                            <button type="button" class="btn btn-success edit" id="{{ $data->id }}" data-toggle="modal" data-target="#editModal">Edit</button></td>
                           </tr>
                               @php
                 $count++;
@@ -108,7 +171,57 @@
           
     $(document).ready(function () {
 
-                    $.ajaxSetup({
+
+            // Edit functionality
+        $(document).on('click', '.edit', function () {
+            var id = $(this).attr('id');
+            // alert(id)
+            $.ajax({
+                url: '/admin/categories/' + id + '/edit',
+                method: 'GET'
+            }).done(function (val) {
+                console.log(val)
+                $.each(val, function (k, v) {
+                    $('#e_id').val(v['id']);
+                    $('#e_cate_name').val(v['cate_name']);
+                    $('#e_meta_title').val(v['meta_title']);
+                    $('#e_meta_desc').val(v['meta_desc']);
+
+                })
+            })
+        });
+
+
+                // Edit AJAX Code
+        $('#updateForm').submit(function (e) {
+            e.preventDefault(); // Form ko reload hone se rokein
+            var id = $('#e_id').val();
+            var formData = new FormData(this)
+
+            $.ajax({
+                url: '/admin/categories/'+ id, // Resource route follow karein
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Ensure this exists
+                }
+
+            }).done(function (res) {
+                // alert('done')    
+                $('#editModal').modal('hide');
+                location.reload();
+            });
+        });
+
+
+
+
+
+
+
+        $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }

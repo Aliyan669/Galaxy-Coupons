@@ -5,7 +5,9 @@
     <!-- <h1>Add Categories</h1> -->
 
     <section class="section">
+          <x-alert-msg/>
         <div class="section-body">
+            
 
           <form enctype="multipart/form-data" action="{{route('categories.store')}}" class="form-sample p-3" method="post">
                         @csrf

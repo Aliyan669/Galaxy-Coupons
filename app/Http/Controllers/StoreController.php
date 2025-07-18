@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
@@ -11,7 +11,12 @@ class StoreController extends Controller
      */
     public function index()
     {
-        return view('pages.backend.allStore');
+        $store = DB::select('
+    SELECT stores.*, categories.cate_name
+    FROM stores
+    LEFT JOIN categories ON stores.cate_id = categories.id
+');
+        return view('pages.backend.allStore', compact('store'));
     }
 
     /**
@@ -19,7 +24,10 @@ class StoreController extends Controller
      */
     public function create()
     {
-        return view('pages.backend.addStore');
+        $categories = DB::table('categories')->select('cate_name', 'id')->get();
+        return view('pages.backend.addStore', compact('categories'));
+
+
     }
 
     /**
@@ -27,7 +35,23 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store_name = $request->store_name;
+        $store_url = $request->store_url;
+        $meta_title = $request->meta_title;
+        $meta_desc = $request->meta_desc;
+        $category = $request->category;
+
+
+        $logo = time() . '.' . $request->store_logo->extension();
+        $request->store_logo->move(public_path('backend/images/stores'), $logo);
+
+
+        DB::select('INSERT INTO `stores`(`store_name`, `store_url`,`meta_title`, `meta_desc`,`cate_id`, `store_logo`, `created_at`, `updated_at`) VALUES ("' . $store_name . '","' . $store_url . '", "' . $meta_title . '" ,"' . $meta_desc . '" ,"' . $category . '" ,"' . $logo . '", CURRENT_TIMESTAMP, NULL);');
+
+        return redirect('/admin/store/create')->with([
+            'message' => 'Stores added Successfully!',
+            'type' => 'success'
+        ]);
     }
 
     /**
@@ -59,6 +83,13 @@ class StoreController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+          $deleted = DB::table('stores')->where('id', $id)->delete();
+
+
+        if ($deleted) {
+            return response()->json(['message' => 'Store deleted successfully']);
+        } else {
+            return response()->json(['message' => 'Store not found'], 404);
+        }
     }
 }
