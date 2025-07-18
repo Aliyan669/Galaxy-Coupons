@@ -1,6 +1,35 @@
+
 @extends('layouts.adminlayout')
 
 @section('homeContent')
+
+
+
+
+
+                    <!-- Delete modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              Are you sure You want to delete?
+              </div>
+                  <input type="hidden" name="cate_id" id="delete_cate_id">
+
+              <div class="modal-footer bg-whitesmoke br">
+                <button type="submit" class="btn btn-danger" id="deleteForm">Delete</button>
+                <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
 <!-- <h1>All Categories</h1> -->
         <section class="section">
@@ -55,7 +84,8 @@
                             </td>
                             <td>{{ \Carbon\Carbon::parse($data->created_at)->format('Y-m-d') }}</td>
                             
-                            <td><a href="#" class="btn btn btn-danger mr-3">Delete</a><a href="#" class="btn btn-success  ">Edit</a></td>
+                            <td><button type="button" class="btn btn btn-danger deleteBtn mr-3" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
+                            <a href="#" class="btn btn-success  ">Edit</a></td>
                           </tr>
                               @php
                 $count++;
@@ -72,5 +102,54 @@
 
           </div>
         </section>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script>
+          
+    $(document).ready(function () {
 
+                    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+              // Delete functionality
+        $(".deleteBtn").click(function () {
+            let cateId = $(this).data("id");
+            console.log(cateId);
+
+            $("#delete_cate_id").val(cateId);
+        });
+
+
+
+              // Delete AJAX functionality
+        $('#deleteForm').click(function () {
+            var id = $("#delete_cate_id").val();
+            console.log(id);
+            $.ajax({
+                url: '/admin/categories/'+id,
+                type: 'DELETE',
+                data: {
+                   _method: 'DELETE' // Laravel requires this method override
+                },
+                success: function (data) {
+                    console.log('deleted');
+                    $('#deleteModal').modal('hide');
+                    location.reload();
+                },
+                error: function (res) {
+                    console.log(res.message);
+
+                }
+            });
+        });
+
+    });
+
+    
+</script>
 @endsection
+
+

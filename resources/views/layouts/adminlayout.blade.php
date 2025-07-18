@@ -6,6 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title> Admin - Galaxy Coupon</title>
     <!-- General CSS Files -->
@@ -364,6 +365,8 @@
     <script src="{{ asset('backend/assets/js/app.min.js')}}"></script>
     <!-- JS Libraies -->
     <script src="{{ asset('backend/assets/bundles/datatables/datatables.min.js')}}"></script>
+    <!-- JS Libraies -->
+    <script src="{{ asset('backend/assets/bundles/prism/prism.js')}}"></script>
     <script
         src="{{ asset('backend/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{ asset('backend/assets/bundles/jquery-ui/jquery-ui.min.js')}}"></script>

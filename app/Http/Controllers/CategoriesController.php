@@ -73,6 +73,13 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deleted = DB::table('categories')->where('id', $id)->delete();
+
+        if ($deleted) {
+            return response()->json(['message' => 'Categories deleted successfully']);
+        } else {
+            return response()->json(['message' => 'Categories not found'], 404);
+        }
     }
+
 }
