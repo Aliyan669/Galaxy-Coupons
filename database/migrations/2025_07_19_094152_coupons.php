@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-            Schema::create('categories', function (Blueprint $table) {
+            Schema::create('coupons', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id()->autoIncrement()->primary();;
-            $table->string('cate_name',100);
-            $table->text('meta_title');
-            $table->text('meta_desc');
-            $table->string('cate_logo',250);
+            $table->string('coupon_title',100);
+            $table->string('coupon_desc',250);
+            $table->string('store_url',256);
+            $table->string('coupon_code',100);
+            $table->unsignedBigInteger('store_id')->unsigned(); 
+            $table->foreign('store_id')->references('id')->on('stores');
             $table->timestamps();
+
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-       Schema::dropIfExists('categories');
+         Schema::dropIfExists('coupons');
     }
 };

@@ -15,13 +15,15 @@ return new class extends Migration
             $table->engine = "InnoDB";
             $table->id()->autoIncrement()->primary();;
             $table->string('store_name',100);
+            $table->text('store_desc');
             $table->string('store_url',256);
-            $table->string('meta_title',250);
-            $table->string('meta_desc',250);
+            $table->text('meta_title');
+            $table->text('meta_desc');
             $table->unsignedBigInteger('cate_id')->unsigned(); 
             $table->foreign('cate_id')->references('id')->on('categories');
             $table->string('store_logo',250);
             $table->timestamps();
+
         });
     }
 

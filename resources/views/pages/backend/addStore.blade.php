@@ -17,7 +17,7 @@
 
 
 
-                        <div class="card">
+                        <div class="card card-primary">
                             <div class="card-header">
                                 <h4>Add New Store</h4>
                             </div>
@@ -29,6 +29,10 @@
                                     <input required name="store_name" type="text" class="form-control">
                                 </div>
 
+                                <div class="form-group">
+                                <label>Store Description</label>
+                                <input required name="store_desc"  type="text" class="form-control">
+                            </div>
                                 <div class="form-group">
                                     <label>Store Url</label>
                                     <input type="text" required name="store_url" class="form-control">

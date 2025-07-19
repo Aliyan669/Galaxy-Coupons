@@ -16,7 +16,8 @@ class StoreController extends Controller
     FROM stores
     LEFT JOIN categories ON stores.cate_id = categories.id
 ');
-        return view('pages.backend.allStore', compact('store'));
+        $categories = DB::table('categories')->select('cate_name', 'id')->get();
+        return view('pages.backend.allStore', compact('store', 'categories'));
     }
 
     /**
@@ -36,6 +37,7 @@ class StoreController extends Controller
     public function store(Request $request)
     {
         $store_name = $request->store_name;
+        $store_desc = $request->store_desc;
         $store_url = $request->store_url;
         $meta_title = $request->meta_title;
         $meta_desc = $request->meta_desc;
@@ -46,7 +48,7 @@ class StoreController extends Controller
         $request->store_logo->move(public_path('backend/images/stores'), $logo);
 
 
-        DB::select('INSERT INTO `stores`(`store_name`, `store_url`,`meta_title`, `meta_desc`,`cate_id`, `store_logo`, `created_at`, `updated_at`) VALUES ("' . $store_name . '","' . $store_url . '", "' . $meta_title . '" ,"' . $meta_desc . '" ,"' . $category . '" ,"' . $logo . '", CURRENT_TIMESTAMP, NULL);');
+        DB::select('INSERT INTO `stores`(`store_name`, `store_desc`,`store_url`,`meta_title`, `meta_desc`,`cate_id`, `store_logo`, `created_at`, `updated_at`) VALUES ("' . $store_name . '","' . $store_desc . '","' . $store_url . '", "' . $meta_title . '" ,"' . $meta_desc . '" ,"' . $category . '" ,"' . $logo . '", CURRENT_TIMESTAMP, NULL);');
 
         return redirect('/admin/store/create')->with([
             'message' => 'Stores added Successfully!',
@@ -67,7 +69,8 @@ class StoreController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = DB::select('select * from stores where id= "' . $id . '"');
+        return $data;
     }
 
     /**
@@ -75,7 +78,34 @@ class StoreController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $name = $request->e_store_name;
+        $store_desc = $request->e_store_desc;
+        $url = $request->e_store_url;
+        $title = $request->e_meta_title;
+        $desc = $request->e_meta_desc;
+        $category = $request->e_category;
+
+        $store = DB::table('stores')->where('id', $id)->first();
+        if (!$store) {
+            return response()->json(['error' => 'Store not found'], 404);
+        }
+
+        // Image Upload Fix
+        if ($request->hasFile('e_store_logo')) {
+            $editlogo = time() . '.' . $request->e_store_logo->extension();
+            $request->e_store_logo->move(public_path('backend/images/stores'), $editlogo);
+        } else {
+            $editlogo = $store->store_logo;
+        }
+
+
+        DB::select('UPDATE `stores` SET `store_name`= "' . $name . '",`store_desc`= "' . $store_desc . '", `store_url`= "' . $url . '",`meta_title`= "' . $title . '",`meta_desc`= "' . $desc . '",`store_logo`="' . $editlogo . '", `cate_id`= "' . $category . '" ,`updated_at`= NOW() WHERE id = "' . $id . '"');
+
+
+        return redirect('/admin/store/')->with(key: [
+            'message' => 'Stores Updated successfully!',
+            'type' => 'success'
+        ]);
     }
 
     /**
@@ -83,7 +113,7 @@ class StoreController extends Controller
      */
     public function destroy(string $id)
     {
-          $deleted = DB::table('stores')->where('id', $id)->delete();
+        $deleted = DB::table('stores')->where('id', $id)->delete();
 
 
         if ($deleted) {

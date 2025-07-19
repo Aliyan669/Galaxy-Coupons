@@ -11,11 +11,10 @@
 
           <form enctype="multipart/form-data" action="{{route('categories.store')}}" class="form-sample p-3" method="post">
                         @csrf
-
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-12">
-
-                    <div class="card">
+  
+                    <div class="card card-primary">
                         <div class="card-header">
                             <h4>Add New Category</h4>
                         </div>

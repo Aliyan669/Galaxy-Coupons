@@ -3,12 +3,12 @@
 
 @section('homeContent')
         <!-- Large modal -->
-        <!-- <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title ml-2" id="myLargeModalLabel">Edit Category</h5>
+                <h5 class="modal-title ml-2" id="myLargeModalLabel">Edit Store</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -29,8 +29,18 @@
                        <input required type="hidden" id="e_id" name="e_id" class="form-control" />
  
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input required name="e_cate_name" id="e_cate_name" type="text" class="form-control">
+                                <label>Store Name</label>
+                                <input required name="e_store_name" id="e_store_name" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Store Description</label>
+                                <input required name="e_store_desc" id="e_store_desc" type="text" class="form-control">
+                            </div>
+
+                                <div class="form-group">
+                                <label>Store Url</label>
+                                <input required name="e_store_url" id="e_store_url" type="text" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -43,12 +53,28 @@
                                 <input type="text"  required name="e_meta_desc" id="e_meta_desc" class="form-control">
                             </div>
 
-                            <div class="section-title" style="font-size:12px; ">Category Logo</div>
-                            <div class="custom-file">
-                                <label>Meta Description</label>
-                                <input type="file" class="custom-file-input" name="e_cate_logo" id="customFile">
-                                <label class="custom-file-label" for="customFile">Choose file</label>
-                            </div>
+                       <div class="row">
+                                    <div class="col-12 col-md-12 col-lg-6" style="margin-top:10px;">
+                                        <div class="section-title" style="font-size:12px; ">Store Logo</div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="e_store_logo" id="customFile">
+                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-12 col-lg-6 ">
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select name="e_category" id="e_category" class="form-control">
+                                                 <option disabled selected>Select Category</option>
+                                                   @foreach($categories as $item)
+                                                <option value="{{ $item->id }}">{{ $item->cate_name }}</option>
+                                                    @endforeach
+                                              </select>
+                                        </div>
+                                    </div>
+
+                                </div>
 
                         </div>
 
@@ -66,7 +92,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
 
 
 
@@ -84,7 +110,7 @@
               <div class="modal-body">
               Are you sure You want to delete?
               </div>
-                  <input type="hidden" name="cate_id" id="delete_cate_id">
+                  <input type="hidden" name="store_id" id="delete_store_id">
 
               <div class="modal-footer bg-whitesmoke br">
                 <button type="submit" class="btn btn-danger" id="deleteForm">Delete</button>
@@ -100,9 +126,9 @@
 
             <div class="row">
               <div class="col-12">
-                <div class="card">
+                <div class="card card-primary" >
                   <div class="card-header">
-                    <h4>All Categories</h4>
+                    <h4>All Stores</h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -180,16 +206,21 @@
             var id = $(this).attr('id');
             // alert(id)
             $.ajax({
-                url: '/admin/categories/' + id + '/edit',
+                url: '/admin/store/' + id + '/edit',
                 method: 'GET'
             }).done(function (val) {
                 console.log(val)
                 $.each(val, function (k, v) {
                     $('#e_id').val(v['id']);
-                    $('#e_cate_name').val(v['cate_name']);
+                    $('#e_store_name').val(v['store_name']);
+                    $('#e_store_desc').val(v['store_desc']);
+                     $('#e_store_url').val(v['store_url']);
                     $('#e_meta_title').val(v['meta_title']);
                     $('#e_meta_desc').val(v['meta_desc']);
+                    $('#e_category').val(v['cate_id']);
 
+
+                    $('#e_category').val(v['cate_id']).change();
                 })
             })
         });
@@ -202,7 +233,7 @@
             var formData = new FormData(this)
 
             $.ajax({
-                url: '/admin/categories/'+ id, // Resource route follow karein
+                url: '/admin/store/'+ id, // Resource route follow karein
                 method: 'POST',
                 data: formData,
                 processData: false,
@@ -222,8 +253,6 @@
 
 
 
-
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -232,17 +261,17 @@
 
               // Delete functionality
         $(".deleteBtn").click(function () {
-            let cateId = $(this).data("id");
-            console.log(cateId);
+            let storeId = $(this).data("id");
+            console.log(storeId);
 
-            $("#delete_cate_id").val(cateId);
+            $("#delete_store_id").val(storeId);
         });
 
 
 
               // Delete AJAX functionality
         $('#deleteForm').click(function () {
-            var id = $("#delete_cate_id").val();
+            var id = $("#delete_store_id").val();
             console.log(id);
             $.ajax({
                 url: '/admin/store/'+id,
