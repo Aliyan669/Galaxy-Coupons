@@ -15,8 +15,6 @@
 
                     <div class="col-12 col-md-12 col-lg-12">
 
-
-
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h4>Add New Store</h4>
@@ -60,7 +58,7 @@
                                     <div class="col-12 col-md-12 col-lg-6 ">
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <select name="category" class="form-control">
+                                            <select name="category" class="form-control selectric">
                                                  <option disabled selected>Select Category</option>
                                                 @foreach($categories as $item)
                                                 <option value="{{ $item->id }}">{{ $item->cate_name }}</option>

@@ -55,7 +55,7 @@
                                     <div class="col-12 col-md-12 col-lg-6 ">
                                         <div class="form-group">
                                             <label>Store</label>
-                                            <select name="e_store" id="e_store" class="form-control">
+                                            <select name="e_store" id="e_store" class="form-control selectric">
                                                  <option disabled selected>Select Store</option>
                                                   @foreach($stores as $item)
                                                 <option value="{{ $item->id }}">{{ $item->store_name }}</option>

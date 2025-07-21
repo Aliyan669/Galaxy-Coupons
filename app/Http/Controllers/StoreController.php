@@ -122,4 +122,28 @@ class StoreController extends Controller
             return response()->json(['message' => 'Store not found'], 404);
         }
     }
+
+    public function getCoupons($id)
+{
+    $coupons = DB::table('coupons')
+        ->where('store_id', $id)
+        ->orderBy('sort_order', 'asc')
+        ->get();
+
+    return response()->json($coupons);
+}
+
+public function updateCouponSort(Request $request, $id)
+{
+    $data = $request->input('sortData');
+
+    foreach ($data as $item) {
+        DB::table('coupons')
+            ->where('id', $item['id'])
+            ->update(['sort_order' => $item['sort_order']]);
+    }
+
+    return response()->json(['message' => 'Sort order updated']);
+}
+
 }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('coupon_code',100);
             $table->unsignedBigInteger('store_id')->unsigned(); 
             $table->foreign('store_id')->references('id')->on('stores');
+            $table->integer('sort_order')->nullable();
             $table->timestamps();
 
         });

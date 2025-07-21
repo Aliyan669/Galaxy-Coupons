@@ -24,3 +24,7 @@ Route::resource('/admin/coupon', CouponController::class);
 Route::resource('/admin/blog', BlogController::class);
 
 
+Route::get('/admin/store/{id}/coupons', [StoreController::class, 'getCoupons']);
+Route::post('/admin/store/{id}/update-coupon-sort', [StoreController::class, 'updateCouponSort']);
+
+

@@ -13,6 +13,8 @@ class AdminController extends Controller
         $categoriesCount = DB::select("SELECT COUNT(*) as total  FROM categories")[0]->total;
         $storeCount = DB::select("SELECT COUNT(*) as total  FROM stores")[0]->total;
         $couponCount = DB::select("SELECT COUNT(*) as total  FROM coupons")[0]->total;
-        return view('pages.backend.home', compact('categoriesCount','storeCount','couponCount'));
+        $blogCount = DB::select("SELECT COUNT(*) as total  FROM blogs")[0]->total;
+
+        return view('pages.backend.home', compact('categoriesCount', 'storeCount', 'couponCount', 'blogCount'));
     }
 }

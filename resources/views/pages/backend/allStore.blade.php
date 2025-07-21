@@ -2,13 +2,15 @@
 @extends('layouts.adminlayout')
 
 @section('homeContent')
-        <!-- Large modal -->
+
+
+        <!-- Edit modal -->
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title ml-2" id="myLargeModalLabel">Edit Store</h5>
+                <h5 class="modal-title ml-2" id="myLargeModalLabel">Edit Store Detail</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -65,7 +67,7 @@
                                     <div class="col-12 col-md-12 col-lg-6 ">
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <select name="e_category" id="e_category" class="form-control">
+                                            <select name="e_category" id="e_category" class="form-control selectric">
                                                  <option disabled selected>Select Category</option>
                                                    @foreach($categories as $item)
                                                 <option value="{{ $item->id }}">{{ $item->cate_name }}</option>
@@ -94,7 +96,7 @@
           </div>
         </div>
 
-
+ 
 
                     <!-- Delete modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -120,7 +122,59 @@
           </div>
         </div>
 
-<!-- <h1>All Categories</h1> -->
+
+
+          <!-- Sort modal -->
+        <div class="modal fade" id="sortModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title ml-2" id="myLargeModalLabel">Sort Store All Coupon</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+              <div class="col-12">
+                <div class="">
+                  <div class="card-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="sortable-table">
+                        <thead>
+                          <tr>
+                            <th class="text-center">
+                              <i class="fas fa-th"></i>
+                            </th>
+                            <th>S.No</th>
+                            <th>Coupon Title</th>
+                            <th>Coupon Type</th>
+                            <th>Due Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+             <div class="text-right">
+            <button class="btn btn-primary mt-3" id="saveSortBtn">Save Sort</button>
+             </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!-- <h1>All Stores</h1> -->
+
         <section class="section">
           <div class="section-body">
 
@@ -177,7 +231,7 @@
                             
                             <td><button type="button" class="btn btn btn-danger deleteBtn mr-2" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
                             <button type="button" class="btn btn-success edit mr-2" id="{{ $data->id }}" data-toggle="modal" data-target="#editModal">Edit</button>
-                           <button type="button" class="btn btn-info edit">Sort</button></td>
+                           <button type="button" data-toggle="modal" data-id="{{ $data->id }}" data-target="#sortModal" class="btn btn-info sort-btn">Sort</button></td>
                           </tr>
                               @php
                 $count++;
@@ -196,9 +250,83 @@
         </section>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+
+
+<script>
+  var el = document.getElementById('sortable-table').getElementsByTagName('tbody')[0];
+Sortable.create(el, {
+    handle: '.sort-handler',
+    animation: 150
+});
+</script>
+
+
         <script>
           
     $(document).ready(function () {
+
+
+
+            // Sort functionality
+      $(document).on('click', '.sort-btn', function () {
+    var storeId = $(this).data('id');
+    $('#sortModal').data('store-id', storeId);
+
+    $.ajax({
+        url: '/admin/store/' + storeId + '/coupons',
+        method: 'GET',
+        success: function (data) {
+            let tbody = $('#sortable-table tbody');
+            tbody.empty();
+
+            data.forEach((coupon, index) => {
+                tbody.append(`
+                    <tr data-id="${coupon.id}">
+                    
+                        <td><div class="sort-handler"><i class="fas fa-th"></i></div></td>
+                        <td>${index + 1}</td>
+                        <td>${coupon.coupon_title}</td>
+                        <td>${coupon.coupon_code ? coupon.coupon_code : 'Deal'}</td>
+                        <td>${coupon.created_at}</td>
+                    </tr>
+                `);
+            });
+        }
+    });
+});
+
+
+
+$('#saveSortBtn').click(function () {
+    var rows = $('#sortable-table tbody tr');
+    var sortData = [];
+
+    rows.each(function (index) {
+        sortData.push({
+            id: $(this).data('id'),
+            sort_order: index + 1
+        });
+    });
+
+    var storeId = $('#sortModal').data('store-id');
+
+    $.ajax({
+        url: '/admin/store/' + storeId + '/update-coupon-sort',
+        method: 'POST',
+        data: {
+            sortData: sortData,
+            _token: '{{ csrf_token() }}'
+        },
+        success: function (res) {
+            // alert('Sort Order Saved!');
+            $('#sortModal').modal('hide');
+        }
+    });
+});
+
+
 
 
             // Edit functionality
@@ -295,6 +423,8 @@
 
     
 </script>
+
+
 @endsection
 
 

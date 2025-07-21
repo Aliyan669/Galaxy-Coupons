@@ -11,6 +11,9 @@
     <title> Admin - Galaxy Coupon</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/app.min.css')}}">
+      <link rel="stylesheet" href="{{ asset('backend/assets/bundles/summernote/summernote-bs4.css')}}">
+  <link rel="stylesheet" href="{{ asset('backend/assets/bundles/jquery-selectric/selectric.css')}}">
+  <link rel="stylesheet" href="{{ asset('backend/assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/assets/bundles/datatables/datatables.min.css')}}">
     <link rel="stylesheet"
         href="{{ asset('backend/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')}}">
@@ -365,6 +368,10 @@
     <script src="{{ asset('backend/assets/js/app.min.js')}}"></script>
     <!-- JS Libraies -->
     <script src="{{ asset('backend/assets/bundles/datatables/datatables.min.js')}}"></script>
+      <script src="{{ asset('backend/assets/bundles/summernote/summernote-bs4.js')}}"></script>
+  <script src="{{ asset('backend/assets/bundles/jquery-selectric/jquery.selectric.min.js')}}"></script>
+  <script src="{{ asset('backend/assets/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js')}}"></script>
+  <script src="{{ asset('backend/assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.jsZ')}}"></script>
     <!-- JS Libraies -->
     <script src="{{ asset('backend/assets/bundles/prism/prism.js')}}"></script>
     <script
@@ -377,6 +384,7 @@
     <!-- Template JS File -->
     <script src="{{ asset('backend/assets/js/scripts.js')}}"></script>
     <!-- Custom JS File -->
+    <script src="{{ asset('backend/assets/js/page/advance-table.js')}}"></script>
     <script src="{{ asset('backend/assets/js/custom.js')}}"></script>
     <!-- JS Libraies -->
 

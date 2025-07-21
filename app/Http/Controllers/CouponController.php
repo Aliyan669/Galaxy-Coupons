@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Coupon;
+
 
 class CouponController extends Controller
 {
@@ -34,13 +36,21 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
+
+         $store = $request->store; // <- Yeh form ka input hai, e.g. <select name="store">
+
+        $lastSortOrder = DB::table('coupons')
+        ->where('store_id', $store)
+        ->max('sort_order');
+        $sortOrder = $lastSortOrder ? $lastSortOrder + 1 : 1;
+
         $coupon_title = $request->coupon_title;
         $coupon_desc = $request->coupon_desc;
         $store_url = $request->store_url;
         $coupon_code = $request->coupon_code;
-        $store = $request->store;
+        $sort_order = $sortOrder;
 
-        DB::select('INSERT INTO `coupons`(`coupon_title`, `coupon_desc`,`store_url`,`coupon_code`,`store_id`, `created_at`, `updated_at`) VALUES ("' . $coupon_title . '","' . $coupon_desc . '","' . $store_url . '", "' . $coupon_code . '" ,"' . $store . '" , CURRENT_TIMESTAMP, NULL);');
+        DB::select('INSERT INTO `coupons`(`coupon_title`, `coupon_desc`,`store_url`,`coupon_code`,`store_id`,`sort_order`, `created_at`, `updated_at`) VALUES ("' . $coupon_title . '","' . $coupon_desc . '","' . $store_url . '", "' . $coupon_code . '" ,"' . $store . '" ,"' . $sort_order . '" , CURRENT_TIMESTAMP, NULL);');
 
         return redirect('/admin/coupon/create')->with([
             'message' => 'Coupon added Successfully!',
