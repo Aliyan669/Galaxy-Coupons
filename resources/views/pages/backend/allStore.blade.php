@@ -150,7 +150,7 @@
                             <th>S.No</th>
                             <th>Coupon Title</th>
                             <th>Coupon Type</th>
-                            <th>Due Date</th>
+                            <th>Date</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -289,8 +289,8 @@ Sortable.create(el, {
                         <td>${index + 1}</td>
                         <td>${coupon.coupon_title}</td>
                         <td>${coupon.coupon_code ? coupon.coupon_code : 'Deal'}</td>
-                        <td>${coupon.created_at}</td>
-                    </tr>
+                       <td>${new Date(coupon.created_at).toISOString().slice(0, 10)}</td>
+                      </tr>
                 `);
             });
         }

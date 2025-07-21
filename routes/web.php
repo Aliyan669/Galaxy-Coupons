@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\bannerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CouponController;
@@ -22,7 +23,7 @@ Route::resource('/admin/categories', CategoriesController::class);
 Route::resource('/admin/store', StoreController::class);
 Route::resource('/admin/coupon', CouponController::class);
 Route::resource('/admin/blog', BlogController::class);
-
+Route::resource('/admin/banner', BannerController::class);
 
 Route::get('/admin/store/{id}/coupons', [StoreController::class, 'getCoupons']);
 Route::post('/admin/store/{id}/update-coupon-sort', [StoreController::class, 'updateCouponSort']);

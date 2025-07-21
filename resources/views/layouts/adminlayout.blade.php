@@ -11,9 +11,9 @@
     <title> Admin - Galaxy Coupon</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/app.min.css')}}">
-      <link rel="stylesheet" href="{{ asset('backend/assets/bundles/summernote/summernote-bs4.css')}}">
-  <link rel="stylesheet" href="{{ asset('backend/assets/bundles/jquery-selectric/selectric.css')}}">
-  <link rel="stylesheet" href="{{ asset('backend/assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/bundles/summernote/summernote-bs4.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/bundles/jquery-selectric/selectric.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/assets/bundles/datatables/datatables.min.css')}}">
     <link rel="stylesheet"
         href="{{ asset('backend/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')}}">
@@ -226,22 +226,27 @@
                                         href="/admin/blog/create">Add Blogs</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
+                        <li class="dropdown {{ Request::is('admin/banner*') ? 'active' : '' }}">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i
                                     data-feather="image"></i><span>Banner</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="#">All Banner</a></li>
-                                <li><a class="nav-link" href="#">Add Banner</a></li>
+                                <li><a class="nav-link {{ Request::is('admin/banner') ? 'active' : '' }}"
+                                        href="/admin/banner">All Banner</a></li>
+                                <li><a class="nav-lin {{ Request::is('admin/banner/create') ? 'active' : '' }}"
+                                        href="/admin/banner/create">Add Banner</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
+                        <!-- <li class="dropdown">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i
                                     data-feather="file"></i><span>Pages</span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="#">All Pages</a></li>
                                 <li><a class="nav-link" href="#">Add Pages</a></li>
                             </ul>
-                        </li>
+                        </li> -->
+                        <li><a class="nav-link" href="#"><i data-feather="sliders"></i><span>Site Content
+                                </span></a></li>
+
                         <li><a class="nav-link" href="#"><i data-feather="user-check"></i><span>User
                                 </span></a></li>
                     </ul>
@@ -253,7 +258,6 @@
             <div class="main-content">
 
                 @yield('homeContent')
-
 
                 <div class="settingSidebar">
                     <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
@@ -350,7 +354,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
 
@@ -368,10 +371,10 @@
     <script src="{{ asset('backend/assets/js/app.min.js')}}"></script>
     <!-- JS Libraies -->
     <script src="{{ asset('backend/assets/bundles/datatables/datatables.min.js')}}"></script>
-      <script src="{{ asset('backend/assets/bundles/summernote/summernote-bs4.js')}}"></script>
-  <script src="{{ asset('backend/assets/bundles/jquery-selectric/jquery.selectric.min.js')}}"></script>
-  <script src="{{ asset('backend/assets/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js')}}"></script>
-  <script src="{{ asset('backend/assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.jsZ')}}"></script>
+    <script src="{{ asset('backend/assets/bundles/summernote/summernote-bs4.js')}}"></script>
+    <script src="{{ asset('backend/assets/bundles/jquery-selectric/jquery.selectric.min.js')}}"></script>
+    <script src="{{ asset('backend/assets/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js')}}"></script>
+    <script src="{{ asset('backend/assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.jsZ')}}"></script>
     <!-- JS Libraies -->
     <script src="{{ asset('backend/assets/bundles/prism/prism.js')}}"></script>
     <script
