@@ -28,9 +28,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                <label>Store Description</label>
-                                <input required name="store_desc"  type="text" class="form-control">
-                            </div>
+                                    <label>Store Description</label>
+                                    <input required name="store_desc" type="text" class="form-control">
+                                </div>
                                 <div class="form-group">
                                     <label>Store Url</label>
                                     <input type="text" required name="store_url" class="form-control">
@@ -59,10 +59,10 @@
                                         <div class="form-group">
                                             <label>Category</label>
                                             <select name="category" class="form-control selectric">
-                                                 <option disabled selected>Select Category</option>
+                                                <option disabled selected>Select Category</option>
                                                 @foreach($categories as $item)
-                                                <option value="{{ $item->id }}">{{ $item->cate_name }}</option>
-                                                    @endforeach
+                                                    <option value="{{ $item->id }}">{{ $item->cate_name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -84,5 +84,7 @@
 
         </div>
     </section>
+
+
 
 @endsection

@@ -225,7 +225,7 @@
                             <td>{{  $data->cate_name }}</td>
 
                             <td>
-                              <img alt="image" src="{{ asset('backend/images/stores')}}/{{ $data->store_logo }}" width="35">
+                              <img alt="image" src="{{ asset('backend/images/stores')}}/{{ $data->store_logo }}" width="50">
                             </td>
                             <td>{{ \Carbon\Carbon::parse($data->created_at)->format('Y-m-d') }}</td>
                             

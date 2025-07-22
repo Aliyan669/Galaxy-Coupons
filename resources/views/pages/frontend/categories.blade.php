@@ -3,9 +3,6 @@
 
 @section('homeContent')
 
-
-
-
     <div class="grid_frame page-content">
         <div class="mod-grp-coupon block clearfix" style="margin-top:30px;">
             <div class="grid_12">
@@ -18,86 +15,23 @@
             <div class="grid_12">
             </div>
             <div class="block-content list-brand clearfix">
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"> </a>
 
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <h2 style="text-align:center;">E-Commerce</h2>
-                </div><!--end: .brand-item -->
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
+                @foreach ($categories as $data)
+                    <div class="brand-item grid_4">
+                        <div class="brand-content">
+                            <div class="brand-logo">
+                                <div class="wrap-img-logo">
+                                    <span class="ver_hold"></span>
+                                    <a href="#" class="ver_container"><img
+                                            src="{{ asset('backend/images/categories')}}/{{ $data->cate_logo }}"
+                                            alt="$BRAND_TITLE"> </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <h2 style="text-align:center;">Health</h2>
-                </div><!--end: .brand-item -->
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <h2 style="text-align:center;">Beauty</h2>
+                        <h2 style="text-align:center;">{{  $data->cate_name }}</h2>
+                    </div><!--end: .brand-item -->
+                @endforeach
 
-                </div><!--end: .brand-item -->
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <h2 style="text-align:center;"></h2>
-
-                </div><!--end: .brand-item -->
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <h2 style="text-align:center;">E-Commerce</h2>
-
-                </div><!--end: .brand-item -->
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <h2 style="text-align:center;">E-Commerce</h2>
-
-                </div><!--end: .brand-item -->
             </div>
         </div><!--end: .mod-brand -->
 

@@ -16,8 +16,8 @@
                             <img src="{{ asset('frontend/images/ex/banner_1.png')}}" alt="" />
                         </li>
                         <!-- <li>
-                                    <img src="{{ asset('frontend/images/ex/02_banner.jpg')}}" alt="" />
-                                </li> -->
+                                            <img src="{{ asset('frontend/images/ex/02_banner.jpg')}}" alt="" />
+                                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -142,14 +142,14 @@
                     </div>
 
                     <!-- <div class="pagination">
-                                    <a class="txt-nav" href="#">Newer post</a>
-                                    <a class="page-num active" href="#">1</a>
-                                    <a class="page-num" href="#">2</a>
-                                    <a class="page-num" href="#">3</a>
-                                    <a class="page-num" href="#">4</a>
-                                    <a class="page-num" href="#">5</a>
-                                    <a class="txt-nav" href="#">Older post</a>
-                                </div> -->
+                                            <a class="txt-nav" href="#">Newer post</a>
+                                            <a class="page-num active" href="#">1</a>
+                                            <a class="page-num" href="#">2</a>
+                                            <a class="page-num" href="#">3</a>
+                                            <a class="page-num" href="#">4</a>
+                                            <a class="page-num" href="#">5</a>
+                                            <a class="txt-nav" href="#">Older post</a>
+                                        </div> -->
 
                 </div><!--end: .mod-list-article -->
             </div>
@@ -157,79 +157,32 @@
             <div class="grid_4 sidebar">
 
                 <!-- <div class="mod-search block">
-                                <h3 class="title-block">Find your coupon code</h3>
-                                <div class="block-content">
-                                    <label class="lbl-wrap" for="sys_search_coupon_code">
-                                        <input class="keyword-search" id="sys_search_coupon_code" type="search" placeholder="Search"/>
-                                        <input type="submit" class="btn-search" value="">
-                                    </label>
-                                </div>
-                            </div> -->
+                                        <h3 class="title-block">Find your coupon code</h3>
+                                        <div class="block-content">
+                                            <label class="lbl-wrap" for="sys_search_coupon_code">
+                                                <input class="keyword-search" id="sys_search_coupon_code" type="search" placeholder="Search"/>
+                                                <input type="submit" class="btn-search" value="">
+                                            </label>
+                                        </div>
+                                    </div> -->
                 <!--end: .mod-search -->
 
                 <div class="mod-list-store block">
                     <h3 class="title-block">Popular store</h3>
                     <div class="block-content">
                         <div class="wrap-list-store clearfix">
-                            <a class="brand-logo" href="#">
-                                <span class="wrap-logo">
-                                    <span class="center-img">
-                                        <span class="ver_hold"></span>
-                                        <span class="ver_container"><img src="{{ asset('frontend/images/ex/04-07.jpg')}}"
-                                                alt="$BRAND_NAME"></span>
+                            @foreach ($stores as $data)
+                                <a class="brand-logo" href="#">
+                                    <span class="wrap-logo">
+                                        <span class="center-img">
+                                            <span class="ver_hold"></span>
+                                            <span class="ver_container"><img
+                                                    src="{{ asset('backend/images/stores')}}/{{ $data->store_logo }}"
+                                                    alt="$BRAND_NAME"></span>
+                                        </span>
                                     </span>
-                                </span>
-                            </a>
-
-                            <a class="brand-logo" href="#">
-                                <span class="wrap-logo">
-                                    <span class="center-img">
-                                        <span class="ver_hold"></span>
-                                        <span class="ver_container"><img src="{{ asset('frontend/images/ex/04-12.jpg')}}"
-                                                alt="$BRAND_NAME"></span>
-                                    </span>
-                                </span>
-                            </a>
-
-                            <a class="brand-logo" href="#">
-                                <span class="wrap-logo">
-                                    <span class="center-img">
-                                        <span class="ver_hold"></span>
-                                        <span class="ver_container"><img src="{{ asset('frontend/images/ex/04-11.jpg')}}"
-                                                alt="$BRAND_NAME"></span>
-                                    </span>
-                                </span>
-                            </a>
-
-                            <a class="brand-logo" href="#">
-                                <span class="wrap-logo">
-                                    <span class="center-img">
-                                        <span class="ver_hold"></span>
-                                        <span class="ver_container"><img src="{{ asset('frontend/images/ex/04-12.jpg')}}"
-                                                alt="$BRAND_NAME"></span>
-                                    </span>
-                                </span>
-                            </a>
-
-                            <a class="brand-logo" href="#">
-                                <span class="wrap-logo">
-                                    <span class="center-img">
-                                        <span class="ver_hold"></span>
-                                        <span class="ver_container"><img src="{{ asset('frontend/images/ex/04-11.jpg')}}"
-                                                alt="$BRAND_NAME"></span>
-                                    </span>
-                                </span>
-                            </a>
-
-                            <a class="brand-logo" href="#">
-                                <span class="wrap-logo">
-                                    <span class="center-img">
-                                        <span class="ver_hold"></span>
-                                        <span class="ver_container"><img src="{{ asset('frontend/images/ex/04-10.jpg')}}"
-                                                alt="$BRAND_NAME"></span>
-                                    </span>
-                                </span>
-                            </a>
+                                </a>
+                            @endforeach
 
                         </div>
                     </div>
@@ -342,131 +295,28 @@
                 </h3>
             </div>
             <div class="block-content list-coupon clearfix">
-                <div class="coupon-item grid_3">
-                    <div class="coupon-content">
-                        <div class="img-thumb-center">
-                            <div class="wrap-img-thumb">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_02.jpg')}}"
-                                        alt="$COUPON_TITLE"></a>
+                @foreach ($coupons as $data)
+                    <div class="coupon-item grid_3">
+                        <div class="coupon-content">
+                            <div class="img-thumb-center">
+                                <div class="wrap-img-thumb">
+                                    <span class="ver_hold"></span>
+                                    <a href="#" class="ver_container"><img
+                                            src="{{ asset('backend/images/stores')}}/{{ $data->store_logo }}"
+                                            alt="$COUPON_TITLE"></a>
+                                </div>
                             </div>
+                            <div class="coupon-price">{{  $data->coupon_title }}</div>
+                            <div class="coupon-desc">{{  $data->coupon_desc }}</div>
+                            <div class="time-left">9 days 4 hours left</div>
+                            <a class="btn btn-my btn-take-coupon" target="blank"
+                                href="{{  $data->store_url }}">{{ !empty($data->coupon_code) ? 'View Code' : 'View Deal' }}</a>
                         </div>
-                        <div class="coupon-price">$12.00 Off</div>
-                        <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                        <div class="time-left">9 days 4 hours left</div>
-                        <a class="btn btn-my btn-take-coupon" href="#">VIEW COUPON CODE</a>
-                    </div>
-                    <i class="stick-lbl hot-sale"></i>
-                </div><!--end: .coupon-item -->
-                <div class="coupon-item grid_3">
-                    <div class="coupon-content">
-                        <div class="img-thumb-center">
-                            <div class="wrap-img-thumb">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_03.jpg')}}"
-                                        alt="$COUPON_TITLE"></a>
-                            </div>
-                        </div>
-                        <div class="coupon-price">$17.50 off</div>
-                        <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                        <div class="time-left">9 days 4 hours left</div>
-                        <a class="btn btn-my btn-take-coupon" href="#">17GH0097</a>
-                    </div>
-                    <i class="stick-lbl trust-brand-y"></i>
-                </div><!--end: .coupon-item -->
-                <div class="coupon-item grid_3">
-                    <div class="coupon-content">
-                        <div class="img-thumb-center">
-                            <div class="wrap-img-thumb">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_01.jpg')}}"
-                                        alt="$COUPON_TITLE"></a>
-                            </div>
-                        </div>
-                        <div class="coupon-price">$3.00 Off</div>
-                        <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                        <div class="time-left">2 days 14 hours left</div>
-                        <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                    </div>
-                    <i class="stick-lbl trust-brand-b"></i>
-                </div><!--end: .coupon-item -->
-                <div class="coupon-item grid_3">
-                    <div class="coupon-content">
-                        <div class="img-thumb-center">
-                            <div class="wrap-img-thumb">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_04.jpg')}}"
-                                        alt="$COUPON_TITLE"></a>
-                            </div>
-                        </div>
-                        <div class="coupon-price">$7.00 Off</div>
-                        <div class="coupon-desc">During the Red Star Spectacular Sale going on now get an extra 20% off
-                        </div>
-                        <div class="time-left">12 days 1 hour left</div>
-                        <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                    </div>
-                </div><!--end: .coupon-item -->
-                <div class="coupon-item grid_3">
-                    <div class="coupon-content">
-                        <div class="img-thumb-center">
-                            <div class="wrap-img-thumb">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_04.jpg')}}"
-                                        alt="$COUPON_TITLE"></a>
-                            </div>
-                        </div>
-                        <div class="coupon-price">$2.00 Off</div>
-                        <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                        <div class="time-left">9 days 4 hours left</div>
-                        <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                    </div>
-                </div><!--end: .coupon-item -->
-                <div class="coupon-item grid_3">
-                    <div class="coupon-content">
-                        <div class="img-thumb-center">
-                            <div class="wrap-img-thumb">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_01.jpg')}}"
-                                        alt="$COUPON_TITLE"></a>
-                            </div>
-                        </div>
-                        <div class="coupon-price">$11.50 off</div>
-                        <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                        <div class="time-left">9 days 4 hours left</div>
-                        <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                    </div>
-                </div><!--end: .coupon-item -->
-                <div class="coupon-item grid_3">
-                    <div class="coupon-content">
-                        <div class="img-thumb-center">
-                            <div class="wrap-img-thumb">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_03.jpg')}}"
-                                        alt="$COUPON_TITLE"></a>
-                            </div>
-                        </div>
-                        <div class="coupon-price">$12.00 Off</div>
-                        <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                        <div class="time-left">2 days 14 hours left</div>
-                        <a class="btn btn-my btn-take-coupon" href="#">Dismiss Coupon</a>
-                    </div>
-                </div><!--end: .coupon-item -->
-                <div class="coupon-item grid_3">
-                    <div class="coupon-content">
-                        <div class="img-thumb-center">
-                            <div class="wrap-img-thumb">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_02.jpg')}}"
-                                        alt="$COUPON_TITLE"></a>
-                            </div>
-                        </div>
-                        <div class="coupon-price">$4.5 Off</div>
-                        <div class="coupon-desc">During the Red Star Spectacular Sale going on now get an extra 20% off
-                        </div>
-                        <div class="time-left">12 days 1 hour left</div>
-                        <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                    </div>
-                </div><!--end: .coupon-item -->
+                        <i class="stick-lbl hot-sale"></i>
+                    </div><!--end: .coupon-item -->
+                @endforeach
+
+
             </div>
             <!-- <a class="grid_6 btn btn-orange btn-load-more" href="#">Load more coupon</a> -->
         </div><!--end block: Featured Coupons-->
@@ -494,72 +344,22 @@
                 </h3>
             </div>
             <div class="block-content list-brand clearfix">
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
+                @foreach ($categories as $data)
+                    <div class="brand-item grid_4">
+                        <div class="brand-content">
+                            <div class="brand-logo">
+                                <div class="wrap-img-logo">
+                                    <span class="ver_hold"></span>
+                                    <a href="#" class="ver_container"><img
+                                            src="{{ asset('backend/images/categories')}}/{{ $data->cate_logo }}"
+                                            alt="$BRAND_TITLE"> </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><!--end: .brand-item -->
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end: .brand-item -->
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end: .brand-item -->
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end: .brand-item -->
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end: .brand-item -->
-                <div class="brand-item grid_4">
-                    <div class="brand-content">
-                        <div class="brand-logo">
-                            <div class="wrap-img-logo">
-                                <span class="ver_hold"></span>
-                                <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_07.jpg')}}"
-                                        alt="$BRAND_TITLE"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--end: .brand-item -->
+                        <h2 style="text-align:center;">{{  $data->cate_name }}</h2>
+                    </div><!--end: .brand-item -->
+                @endforeach
+
             </div>
         </div><!--end: .mod-brand -->
     </div>

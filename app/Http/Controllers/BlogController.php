@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class BlogController extends BaseAdminController
 {
     /**
      * Display a listing of the resource.

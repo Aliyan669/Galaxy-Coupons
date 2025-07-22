@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Coupon;
 
 
-class CouponController extends Controller
+class CouponController extends BaseAdminController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $coupons = DB::select('
+        $coupons = DB::select(query: '
     SELECT coupons.*, stores.store_name, stores.store_logo
     FROM coupons
     LEFT JOIN stores ON coupons.store_id = stores.id
@@ -37,11 +37,11 @@ class CouponController extends Controller
     public function store(Request $request)
     {
 
-         $store = $request->store; // <- Yeh form ka input hai, e.g. <select name="store">
+        $store = $request->store; // <- Yeh form ka input hai, e.g. <select name="store">
 
         $lastSortOrder = DB::table('coupons')
-        ->where('store_id', $store)
-        ->max('sort_order');
+            ->where('store_id', $store)
+            ->max('sort_order');
         $sortOrder = $lastSortOrder ? $lastSortOrder + 1 : 1;
 
         $coupon_title = $request->coupon_title;

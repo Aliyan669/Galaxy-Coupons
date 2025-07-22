@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+class StoreController extends BaseAdminController
 {
     /**
      * Display a listing of the resource.

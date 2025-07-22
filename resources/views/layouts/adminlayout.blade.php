@@ -26,7 +26,9 @@
 </head>
 
 <body>
+     @yield('content')
     <div class="loader"></div>
+   
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
@@ -164,7 +166,7 @@
                                 Settings
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="auth-login.html" class="dropdown-item has-icon text-danger"> <i
+                            <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger"> <i
                                     class="fas fa-sign-out-alt"></i>
                                 Logout
                             </a>
@@ -236,18 +238,11 @@
                                         href="/admin/banner/create">Add Banner</a></li>
                             </ul>
                         </li>
-                        <!-- <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                    data-feather="file"></i><span>Pages</span></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="#">All Pages</a></li>
-                                <li><a class="nav-link" href="#">Add Pages</a></li>
-                            </ul>
-                        </li> -->
-                        <li><a class="nav-link" href="#"><i data-feather="sliders"></i><span>Site Content
+        
+                        <li class="{{ Request::is('admin/site-content') ? 'active' : '' }}"><a class="nav-link " href="/admin/site-content"><i data-feather="sliders"></i><span>Site Content
                                 </span></a></li>
 
-                        <li><a class="nav-link" href="#"><i data-feather="user-check"></i><span>User
+                        <li class="{{ Request::is('admin/user') ? 'active' : '' }}"><a class="nav-link " href="/admin/user"><i data-feather="user-check"></i><span>User
                                 </span></a></li>
                     </ul>
                 </aside>
@@ -367,6 +362,19 @@
             </footer>
         </div>
     </div>
+
+        <!-- At bottom of your Blade -->
+<script>
+    document.querySelectorAll('.custom-file-input').forEach(function (input) {
+        input.addEventListener('change', function (e) {
+            let fileName = e.target.files[0]?.name;
+            if (fileName) {
+                e.target.nextElementSibling.innerText = fileName;
+            }
+        });
+    });
+</script>
+
     <!-- General JS Scripts -->
     <script src="{{ asset('backend/assets/js/app.min.js')}}"></script>
     <!-- JS Libraies -->

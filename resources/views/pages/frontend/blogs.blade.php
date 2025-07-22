@@ -137,71 +137,19 @@
                         <h3 class="title-block">Popular store</h3>
                         <div class="block-content">
                             <div class="wrap-list-store clearfix">
+                                @foreach ($stores as $data)
                                 <a class="brand-logo" href="#">
                                     <span class="wrap-logo">
                                         <span class="center-img">
                                             <span class="ver_hold"></span>
                                             <span class="ver_container"><img
-                                                    src="{{ asset('frontend/images/ex/04-07.jpg')}}"
+                                                    src="{{ asset('backend/images/stores')}}/{{ $data->store_logo }}"
                                                     alt="$BRAND_NAME"></span>
                                         </span>
                                     </span>
                                 </a>
+                            @endforeach
 
-                                <a class="brand-logo" href="#">
-                                    <span class="wrap-logo">
-                                        <span class="center-img">
-                                            <span class="ver_hold"></span>
-                                            <span class="ver_container"><img
-                                                    src="{{ asset('frontend/images/ex/04-12.jpg')}}"
-                                                    alt="$BRAND_NAME"></span>
-                                        </span>
-                                    </span>
-                                </a>
-
-                                <a class="brand-logo" href="#">
-                                    <span class="wrap-logo">
-                                        <span class="center-img">
-                                            <span class="ver_hold"></span>
-                                            <span class="ver_container"><img
-                                                    src="{{ asset('frontend/images/ex/04-11.jpg')}}"
-                                                    alt="$BRAND_NAME"></span>
-                                        </span>
-                                    </span>
-                                </a>
-
-                                <a class="brand-logo" href="#">
-                                    <span class="wrap-logo">
-                                        <span class="center-img">
-                                            <span class="ver_hold"></span>
-                                            <span class="ver_container"><img
-                                                    src="{{ asset('frontend/images/ex/04-10.jpg')}}"
-                                                    alt="$BRAND_NAME"></span>
-                                        </span>
-                                    </span>
-                                </a>
-
-                                <a class="brand-logo" href="#">
-                                    <span class="wrap-logo">
-                                        <span class="center-img">
-                                            <span class="ver_hold"></span>
-                                            <span class="ver_container"><img
-                                                    src="{{ asset('frontend/images/ex/04-09.jpg')}}"
-                                                    alt="$BRAND_NAME"></span>
-                                        </span>
-                                    </span>
-                                </a>
-
-                                <a class="brand-logo" href="#">
-                                    <span class="wrap-logo">
-                                        <span class="center-img">
-                                            <span class="ver_hold"></span>
-                                            <span class="ver_container"><img
-                                                    src="{{ asset('frontend/images/ex/04-08.jpg')}}"
-                                                    alt="$BRAND_NAME"></span>
-                                        </span>
-                                    </span>
-                                </a>
                             </div>
                         </div>
                     </div><!--end: .mod-list-store -->

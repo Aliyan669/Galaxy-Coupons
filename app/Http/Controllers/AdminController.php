@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class AdminController extends BaseAdminController
 {
     public function Home()
     {
+         if (!Session::has('admin_logged_in')) {
+        return redirect('/admin/login');
+    }
         $categoriesCount = DB::select("SELECT COUNT(*) as total  FROM categories")[0]->total;
         $storeCount = DB::select("SELECT COUNT(*) as total  FROM stores")[0]->total;
         $couponCount = DB::select("SELECT COUNT(*) as total  FROM coupons")[0]->total;
