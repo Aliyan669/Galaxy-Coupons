@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str; // File ke top me likhna zaroori hai
+
 
 class StoreController extends BaseAdminController
 {
@@ -12,7 +14,7 @@ class StoreController extends BaseAdminController
     public function index()
     {
         $store = DB::select('
-    SELECT stores.*, categories.cate_name
+    SLECET stores.*, categories.cate_name
     FROM stores
     LEFT JOIN categories ON stores.cate_id = categories.id
 ');
@@ -36,9 +38,12 @@ class StoreController extends BaseAdminController
      */
     public function store(Request $request)
     {
+
+        $slug = Str::slug($request->store_name); 
         $store_name = $request->store_name;
         $store_desc = $request->store_desc;
-        $store_url = $request->store_url;
+        // $store_url = $request->store_url;
+        
         $meta_title = $request->meta_title;
         $meta_desc = $request->meta_desc;
         $category = $request->category;
@@ -48,7 +53,7 @@ class StoreController extends BaseAdminController
         $request->store_logo->move(public_path('backend/images/stores'), $logo);
 
 
-        DB::select('INSERT INTO `stores`(`store_name`, `store_desc`,`store_url`,`meta_title`, `meta_desc`,`cate_id`, `store_logo`, `created_at`, `updated_at`) VALUES ("' . $store_name . '","' . $store_desc . '","' . $store_url . '", "' . $meta_title . '" ,"' . $meta_desc . '" ,"' . $category . '" ,"' . $logo . '", CURRENT_TIMESTAMP, NULL);');
+        DB::select('INSERT INTO `stores`(`store_name`, `store_desc`,`store_url`,`meta_title`, `meta_desc`,`cate_id`, `store_logo`, `created_at`, `updated_at`) VALUES ("' . $store_name . '","' . $store_desc . '","' . $slug . '", "' . $meta_title . '" ,"' . $meta_desc . '" ,"' . $category . '" ,"' . $logo . '", CURRENT_TIMESTAMP, NULL);');
 
         return redirect('/admin/store/create')->with([
             'message' => 'Stores added Successfully!',

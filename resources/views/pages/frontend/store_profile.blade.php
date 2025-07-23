@@ -12,13 +12,13 @@
                                 <div class="img-thumb-center">
                                     <div class="wrap-img-thumb">
                                         <span class="ver_hold"></span>
-                                        <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/08-02.jpg')}}" alt="$BRAND_NAME"/></a>
+                                        <a href="#" class="ver_container"><img src="{{ asset('backend/images/stores/' . $store->store_logo) }}" alt="{{ $store->store_name }}" alt="$BRAND_NAME"/></a>
                                     </div>
                                 </div>
                                 <i class="stick-lbl trust-brand-b"></i>
                             </div>
                             <div class="brand-desc">
-                                <div class="title-desc">Lindt Coupon Code</div>
+                                <div class="title-desc">{{ $store->store_name }}</div>
                                 <p class="rs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis metus non nunc iaculis dapibus. Nullam tempus accumsan metus vitae facilisis. Nullam non faucibus nisi, nec auctor neque. Ut consequat consequat purus. Sed vestivbulum viverra nulla vel fermentum. Fusce luctus ultrices lorem, in placerat nibh adipiscing ut. </p>
                             </div>
                             <div class="right-counter">
@@ -43,125 +43,33 @@
                                         <span class="lbl">Coupons code</span>
                                         <span class="val">31</span>
                                     </div>
-                                    <a class="btn btn-my btn-follow-brand" href="#">Follow brand</a>
+                                    <a class="btn btn-my btn-follow-brand" href='{{ $store->store_url }}'>Follow brand</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="mod-grp-coupon block">
                         <div class="block-content list-coupon clearfix">
+                              @forelse ($coupons as $coupon)
                             <div class="coupon-item grid_3">
                                 <div class="coupon-content">
                                     <div class="img-thumb-center">
                                         <div class="wrap-img-thumb">
                                             <span class="ver_hold"></span>
-                                            <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_01.jpg')}}" alt="$COUPON_TITLE"></a>
+                                            <a href="#" class="ver_container"><img src="{{ asset('backend/images/stores/' . $store->store_logo) }}" alt="$COUPON_TITLE"></a>
                                         </div>
                                     </div>
-                                    <div class="coupon-price">$2.00 Off</div>
-                                    <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
+                                    <div class="coupon-price">{{ $coupon->coupon_title }}</div>
+                                    <div class="coupon-desc">{{ $coupon->coupon_desc }}</div>
                                     <div class="time-left">9 days 4 hours left</div>
-                                    <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
+                                    <a class="btn btn-my btn-take-coupon" href="#">{{ !empty($coupon->coupon_code) ? 'View Code' : 'View Deal' }}</a>
                                 </div>
                             </div><!--end: .coupon-item -->
-                            <div class="coupon-item grid_3">
-                                <div class="coupon-content">
-                                    <div class="img-thumb-center">
-                                        <div class="wrap-img-thumb">
-                                            <span class="ver_hold"></span>
-                                            <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_02.jpg')}}" alt="$COUPON_TITLE"></a>
-                                        </div>
-                                    </div>
-                                    <div class="coupon-price">Save $1.50 on two</div>
-                                    <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                                    <div class="time-left">9 days 4 hours left</div>
-                                    <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                                </div>
-                            </div><!--end: .coupon-item -->
-                            <div class="coupon-item grid_3">
-                                <div class="coupon-content">
-                                    <div class="img-thumb-center">
-                                        <div class="wrap-img-thumb">
-                                            <span class="ver_hold"></span>
-                                            <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_03.jpg')}}" alt="$COUPON_TITLE"></a>
-                                        </div>
-                                    </div>
-                                    <div class="coupon-price">$5.00 Off</div>
-                                    <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                                    <div class="time-left">2 days 14 hours left</div>
-                                    <a class="btn btn-my btn-take-coupon untake" href="#">Un Take Coupon</a>
-                                </div>
-                            </div><!--end: .coupon-item -->
-                            <div class="coupon-item grid_3">
-                                <div class="coupon-content">
-                                    <div class="img-thumb-center">
-                                        <div class="wrap-img-thumb">
-                                            <span class="ver_hold"></span>
-                                            <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_04.jpg')}}" alt="$COUPON_TITLE"></a>
-                                        </div>
-                                    </div>
-                                    <div class="coupon-price">$7.00 Off</div>
-                                    <div class="coupon-desc">During the Red Star Spectacular Sale going on now get an extra 20% off</div>
-                                    <div class="time-left">12 days 1 hour left</div>
-                                    <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                                </div>
-                            </div><!--end: .coupon-item -->
-                            <div class="coupon-item grid_3">
-                                <div class="coupon-content">
-                                    <div class="img-thumb-center">
-                                        <div class="wrap-img-thumb">
-                                            <span class="ver_hold"></span>
-                                            <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_02.jpg')}}" alt="$COUPON_TITLE"></a>
-                                        </div>
-                                    </div>
-                                    <div class="coupon-price">$12.00 Off</div>
-                                    <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                                    <div class="time-left">9 days 4 hours left</div>
-                                    <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                                </div>
-                            </div><!--end: .coupon-item -->
-                            <div class="coupon-item grid_3">
-                                <div class="coupon-content">
-                                    <div class="img-thumb-center">
-                                        <div class="wrap-img-thumb">
-                                            <span class="ver_hold"></span>
-                                            <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_03.jpg')}}" alt="$COUPON_TITLE"></a>
-                                        </div>
-                                    </div>
-                                    <div class="coupon-price">$17.50 off</div>
-                                    <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                                    <div class="time-left">9 days 4 hours left</div>
-                                    <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                                </div>
-                            </div><!--end: .coupon-item -->
-                            <div class="coupon-item grid_3">
-                                <div class="coupon-content">
-                                    <div class="img-thumb-center">
-                                        <div class="wrap-img-thumb">
-                                            <span class="ver_hold"></span>
-                                            <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_01.jpg')}}" alt="$COUPON_TITLE"></a>
-                                        </div>
-                                    </div>
-                                    <div class="coupon-price">$3.00 Off</div>
-                                    <div class="coupon-desc">Find Parts for All Major Brands at Sears PartsDirect </div>
-                                    <div class="time-left">2 days 14 hours left</div>
-                                    <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                                </div>
-                            </div><!--end: .coupon-item -->
-                            <div class="coupon-item grid_3">
-                                <div class="coupon-content">
-                                    <div class="img-thumb-center">
-                                        <div class="wrap-img-thumb">
-                                            <span class="ver_hold"></span>
-                                            <a href="#" class="ver_container"><img src="{{ asset('frontend/images/ex/01_04.jpg')}}" alt="$COUPON_TITLE"></a>
-                                        </div>
-                                    </div>
-                                    <div class="coupon-price">$7.00 Off</div>
-                                    <div class="coupon-desc">During the Red Star Spectacular Sale going on now get an extra 20% off</div>
-                                    <div class="time-left">12 days 1 hour left</div>
-                                    <a class="btn btn-my btn-take-coupon" href="#">Take Coupon</a>
-                                </div>
-                            </div><!--end: .coupon-item -->                           
+
+                            @empty
+              <h3 style="text-align:center;">  No coupons available for this store.</h3>
+            @endforelse
+      
                         </div>
                      </div><!--end block: List Coupons-->
 

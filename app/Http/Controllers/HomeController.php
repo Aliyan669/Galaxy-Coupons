@@ -18,23 +18,67 @@ class HomeController extends Controller
         $stores = DB::select("select * from stores LIMIT 6");
         return view('pages.frontend.home', compact('categories', 'stores', 'coupons'));
     }
+
+
+
+
     public function Stores()
     {
-        return view('pages.frontend.stores');
+       
+    $stores = DB::table('stores')
+        ->select('store_name', 'store_url' ,'store_logo') // slug ya id for links
+        ->orderBy('store_name')
+        ->get();
+
+    $groupedStores = [];
+
+    foreach ($stores as $store) {
+        $firstLetter = strtoupper(substr($store->store_name, 0, 1));
+        if (!preg_match('/[A-Z]/', $firstLetter)) {
+            $firstLetter = '0-9';
+        }
+        $groupedStores[$firstLetter][] = $store;
     }
+
+    ksort($groupedStores);
+        return view('pages.frontend.stores' ,compact('groupedStores'));
+    }
+
+
+
+
     public function Blogs()
     {
         $stores = DB::select("select * from stores LIMIT 6");
         return view('pages.frontend.blogs', compact('stores'));
     }
+
+
+
     public function Categories()
     {
         $categories = DB::select("select * from categories");
         return view('pages.frontend.categories', compact('categories'));
     }
 
-    public function StoreProfile()
+
+    public function StoreProfile($slug)
     {
-        return view('pages.frontend.store_profile');
+            // 1. Slug se store dhoondo
+    $store = DB::table('stores')->where('store_url', $slug)->first();
+    if (!$store) {
+        abort(404); // agar store nahi mila
     }
+
+    // 2. Store ke coupons le lo
+    $coupons = DB::table('coupons')
+                ->where('store_id', $store->id)
+                ->get();
+
+    // 3. View pe bhej do
+        return view('pages.frontend.store_profile', compact('store', 'coupons'));
+    }
+
+
+
 }
