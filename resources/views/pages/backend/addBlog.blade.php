@@ -43,7 +43,7 @@
                       </div>
                     </div>
                     <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-2">Blog Image</label>
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-2">Blog Image &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Size Should be 700px by 310px)</label>
                       <div class="col-sm-12 col-md-8">
                         <div id="image-preview" class="image-preview">
                           <label for="image-upload" id="image-label">Choose File</label>
@@ -51,12 +51,6 @@
                         </div>
                       </div>
                     </div>
-                    <!-- <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-10"></label>
-                      <div class="col-sm-12 col-md-2">
-                        <button class="btn btn-primary">Save</button>
-                      </div>
-                    </div> -->
                   </div>
 
                     <div class="card-footer text-right">

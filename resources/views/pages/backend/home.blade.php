@@ -125,8 +125,8 @@
                                         <div class="list-inline text-center">
                                             <div class="list-inline-item p-r-30"><i data-feather="arrow-up-circle"
                                                     class="col-green"></i>
-                                                <h5 class="m-b-0">$675</h5>
-                                                <p class="text-muted font-14 m-b-0">Weekly Earnings</p>
+                                                <h5 class="m-b-0">675</h5>
+                                                <p class="text-muted font-14 m-b-0">Weekly Stores</p>
                                             </div>
                                         </div>
                                     </div>
@@ -134,8 +134,8 @@
                                         <div class="list-inline text-center">
                                             <div class="list-inline-item p-r-30"><i data-feather="arrow-down-circle"
                                                     class="col-orange"></i>
-                                                <h5 class="m-b-0">$1,587</h5>
-                                                <p class="text-muted font-14 m-b-0">Monthly Earnings</p>
+                                                <h5 class="m-b-0">109</h5>
+                                                <p class="text-muted font-14 m-b-0">Weekly Categories</p>
                                             </div>
                                         </div>
                                     </div>
@@ -143,8 +143,8 @@
                                         <div class="list-inline text-center">
                                             <div class="list-inline-item p-r-30"><i data-feather="arrow-up-circle"
                                                     class="col-green"></i>
-                                                <h5 class="mb-0 m-b-0">$45,965</h5>
-                                                <p class="text-muted font-14 m-b-0">Yearly Earnings</p>
+                                                <h5 class="mb-0 m-b-0">5,965</h5>
+                                                <p class="text-muted font-14 m-b-0">Weekly Coupons</p>
                                             </div>
                                         </div>
                                     </div>
@@ -152,27 +152,27 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="row mt-5">
-                                    <div class="col-7 col-xl-7 mb-3">Total customers</div>
+                                    <div class="col-7 col-xl-7 mb-3">Total Stores</div>
                                     <div class="col-5 col-xl-5 mb-3">
                                         <span class="text-big">8,257</span>
                                         <sup class="col-green">+09%</sup>
                                     </div>
-                                    <div class="col-7 col-xl-7 mb-3">Total Income</div>
+                                    <div class="col-7 col-xl-7 mb-3">Total Coupons</div>
                                     <div class="col-5 col-xl-5 mb-3">
-                                        <span class="text-big">$9,857</span>
+                                        <span class="text-big">857</span>
                                         <sup class="text-danger">-18%</sup>
                                     </div>
-                                    <div class="col-7 col-xl-7 mb-3">Project completed</div>
+                                    <div class="col-7 col-xl-7 mb-3">Total Categories</div>
                                     <div class="col-5 col-xl-5 mb-3">
                                         <span class="text-big">28</span>
                                         <sup class="col-green">+16%</sup>
                                     </div>
-                                    <div class="col-7 col-xl-7 mb-3">Total expense</div>
+                                    <div class="col-7 col-xl-7 mb-3">Total Blogs</div>
                                     <div class="col-5 col-xl-5 mb-3">
-                                        <span class="text-big">$6,287</span>
+                                        <span class="text-big">287</span>
                                         <sup class="col-green">+09%</sup>
                                     </div>
-                                    <div class="col-7 col-xl-7 mb-3">New Customers</div>
+                                    <div class="col-7 col-xl-7 mb-3">Total Banners</div>
                                     <div class="col-5 col-xl-5 mb-3">
                                         <span class="text-big">684</span>
                                         <sup class="col-green">+22%</sup>

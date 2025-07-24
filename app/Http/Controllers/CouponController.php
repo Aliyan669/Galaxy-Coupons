@@ -19,7 +19,8 @@ class CouponController extends BaseAdminController
     LEFT JOIN stores ON coupons.store_id = stores.id
 ');
         $stores = DB::table('stores')->select('store_name', 'id')->get();
-        return view('pages.backend.allCoupon', compact('stores', 'coupons'));
+        $site_content = DB::table('site_contents')->first();
+        return view('pages.backend.allCoupon', compact('stores', 'coupons' ,'site_content'));
     }
 
     /**
@@ -27,8 +28,9 @@ class CouponController extends BaseAdminController
      */
     public function create()
     {
+        $site_content = DB::table('site_contents')->first();
         $store = DB::table('stores')->select('store_name', 'id')->get();
-        return view('pages.backend.addCoupon', compact('store'));
+        return view('pages.backend.addCoupon', compact('store','site_content'));
     }
 
     /**

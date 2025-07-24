@@ -9,7 +9,8 @@ class SiteContentController extends BaseAdminController
     public function index()
 {
     $content = DB::table('site_contents')->first();
-    return view('pages.backend.site_content' ,compact('content'));
+    $site_content = DB::table('site_contents')->first();
+    return view('pages.backend.site_content' ,compact('content' ,'site_content'));
 }
 
 public function update(Request $request)

@@ -33,10 +33,10 @@
 
                             <div class="form-group">
                                 <label>Meta Description</label>
-                                <input type="text"  required name="meta_desc" class="form-control">
+                                <textarea type="text"  required name="meta_desc" class="form-control"></textarea>
                             </div>
 
-                            <div class="section-title" style="font-size:12px; ">Category Logo</div>
+                            <div class="section-title" style="font-size:12px; ">Category Image &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Size Should be 715px by 400px)</div>
                             <div class="custom-file">
                                 <label>Meta Description</label>
                                 <input type="file" class="custom-file-input" name="cate_logo" id="customFile">

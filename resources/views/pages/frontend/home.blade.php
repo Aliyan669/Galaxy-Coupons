@@ -3,6 +3,23 @@
 
 @section('homeContent')
 
+<!-- Custom Coupon Modal -->
+<div id="customModal" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
+  <div style="width:400px; margin:100px auto; background:#fff; padding:20px; border-radius:8px; text-align:center; position:relative;">
+    <h4 id="modalCouponTitle"  style="margin-bottom:10px; font-size:25px; color: black; "></h4>
+
+    <div id="codeSection" style="display:none; ">
+      <input type="text" id="couponCodeInput" style="padding:4px 10px; width:50%; text-align: center; font-size:18px; border: none;"> 
+      <button class="btn btn-my btn-take-coupon" style="margin-top: 20px; margin-bottom:25px; margin-left:5px;" onclick="copyCode()">Copy Code</button>
+    </div>
+
+    <div id="dealSection" style="display:none; font-size: 15px; margin-top: 20px; ">
+      <p>This is a deal – no code needed</p>
+    </div>
+    <button class="btn btn-red" onclick="closeModal()" style="margin-top:10px;">Close</button>
+  </div>
+</div>
+
     <!-- <div class="top-area"> -->
 
     <div class="mod-head-slide">
@@ -78,67 +95,25 @@
             <div class="grid_8 content">
                 <div class="mod-list-article">
                     <div class="list-article">
+                           @foreach ($blogs as $data)
                         <div class="article-item">
-                            <a href="blog-detail.html"><img class="feature-img"
-                                    src="{{ asset('frontend/images/ex/12-01.jpg')}}" alt="$ARTICLE_TITLE" /></a>
+                            <a ><img class="feature-img"
+                                    src="{{ asset('backend/images/blogs')}}/{{ $data->blog_logo }}" alt="$ARTICLE_TITLE" /></a>
                             <div class="flex">
                                 <div class="thumb-left wrap-date-post">
                                     <div class="date">
                                         <span class="day">12</span>
-                                        <span class="my">May / 2013</span>
+                                        <span class="my">May / 2025</span>
                                     </div>
-                                    <a class="btn-more" href="blog-detail.html">Read more</a>
+                                    <a class="btn-more">Read more</a>
                                 </div>
                                 <div class="flex-body">
-                                    <p class="art-title rs"><a href="blog-detail.html">Lorem ipsum dolor sit amet
-                                            consectetuer </a></p>
-                                    <p class="rs art-desc">Nullam magna velit, rhoncus at urna et, dapibus eu, fermentum
-                                        eros. Integer sit amet purus hendrerit, porttitor ligula et, mollis est. Etiam odio
-                                        est, pharetra non dui eu, blandit lacinia nunc. Proin vel pharetra lacus. Quisque at
-                                        elit et elit elementum tempor quis quis mi</p>
+                                    <p class="art-title rs"><a >{{  $data->blog_title }} </a></p>
+                                    <p class="rs art-desc" style="font-weight: 1px !Important;"> {!! $data->blog_content !!}</p>
                                 </div>
                             </div>
                         </div><!--end: article-item -->
-                        <div class="article-item">
-                            <a href="blog-detail.html"><img class="feature-img"
-                                    src="{{ asset('frontend/images/ex/12-02.jpg')}}" alt="$ARTICLE_TITLE" /></a>
-                            <div class="flex">
-                                <div class="thumb-left wrap-date-post">
-                                    <div class="date">
-                                        <span class="day">31</span>
-                                        <span class="my">Dec / 2013</span>
-                                    </div>
-                                    <a class="btn-more" href="blog-detail.html">Read more</a>
-                                </div>
-                                <div class="flex-body">
-                                    <p class="art-title rs"><a href="blog-detail.html">Integer ut nisl eu mi aliquet</a></p>
-                                    <p class="rs art-desc">Duis eleifend eu magna dapibus viverra. Proin lorem lorem,
-                                        lacinia eu massa vel, tempus condimentum quam. Mauris nec cursus ipsum, nec rhoncus
-                                        lectus. Sed velit magna, ullamcorper a metus quis, dictum sollicitudin diam. In sed
-                                        metus sed augue tempor volutpat</p>
-                                </div>
-                            </div>
-                        </div><!--end: article-item -->
-                        <div class="article-item">
-                            <a href="blog-detail.html"><img class="feature-img"
-                                    src="{{ asset('frontend/images/ex/12-04.jpg')}}" alt="$ARTICLE_TITLE" /></a>
-                            <div class="flex">
-                                <div class="thumb-left wrap-date-post">
-                                    <div class="date">
-                                        <span class="day">20</span>
-                                        <span class="my">Feb / 2013</span>
-                                    </div>
-                                    <a class="btn-more" href="blog-detail.html">Read more</a>
-                                </div>
-                                <div class="flex-body">
-                                    <p class="art-title rs"><a href="blog-detail.html">Nam lectus elit, condimentum sed
-                                            imperdie</a></p>
-                                    <p class="rs art-desc">Quisque justo magna, bibendum eget ante nec, luctus pellentesque
-                                        libero. Duis interdum congue congue. Etiam purus lacus, tempus eu fringilla
-                                        vehicula, ornare sed mauris.</p>
-                                </div>
-                            </div>
-                        </div><!--end: article-item -->
+                          @endforeach
                     </div>
 
                     <!-- <div class="pagination">
@@ -156,23 +131,12 @@
 
             <div class="grid_4 sidebar">
 
-                <!-- <div class="mod-search block">
-                                        <h3 class="title-block">Find your coupon code</h3>
-                                        <div class="block-content">
-                                            <label class="lbl-wrap" for="sys_search_coupon_code">
-                                                <input class="keyword-search" id="sys_search_coupon_code" type="search" placeholder="Search"/>
-                                                <input type="submit" class="btn-search" value="">
-                                            </label>
-                                        </div>
-                                    </div> -->
-                <!--end: .mod-search -->
-
                 <div class="mod-list-store block">
                     <h3 class="title-block">Popular store</h3>
                     <div class="block-content">
                         <div class="wrap-list-store clearfix">
                             @foreach ($stores as $data)
-                                <a class="brand-logo" href="#">
+                                <a class="brand-logo" href="/store">
                                     <span class="wrap-logo">
                                         <span class="center-img">
                                             <span class="ver_hold"></span>
@@ -188,7 +152,6 @@
                     </div>
                 </div>
                 <!-- end: .mod-list-store -->
-
 
                 <div class="mod-simple-coupon block">
                     <h3 class="title-block">Latest Blogs</h3>
@@ -275,12 +238,14 @@
                 <div class="mod-popular-tag block">
                     <h3 class="title-block">Popular Tag</h3>
                     <div class="block-content">
-                        <a class="btn btn-gray type-tag" href="#">Sweet</a>
-                        <a class="btn btn-gray type-tag" href="#">Lindor</a>
-                        <a class="btn btn-gray type-tag" href="#">Food</a>
-                        <a class="btn btn-gray type-tag" href="#">Lindt</a>
-                        <a class="btn btn-gray type-tag" href="#">Walmart</a>
-                        <a class="btn btn-gray type-tag" href="#">Chocolate</a>
+                        <a class="btn btn-gray type-tag">Fashion</a>
+                        <a class="btn btn-gray type-tag">Beauty</a>
+                        <a class="btn btn-gray type-tag">Sports</a>
+                        <a class="btn btn-gray type-tag">Coupon</a>
+                        <a class="btn btn-gray type-tag">Saving</a>
+                        <a class="btn btn-gray type-tag">Offers</a>
+                        <a class="btn btn-gray type-tag">Brands</a>
+
                     </div>
                 </div>
             </div>
@@ -291,7 +256,7 @@
             <div class="grid_12">
                 <h3 class="title-block has-link" style="text-align:center;">
                     Featured Coupons
-                    <a href="#" class="link-right">See all <i class="pick-right"></i></a>
+                    <a href="/store" class="link-right">See all <i class="pick-right"></i></a>
                 </h3>
             </div>
             <div class="block-content list-coupon clearfix">
@@ -301,7 +266,7 @@
                             <div class="img-thumb-center">
                                 <div class="wrap-img-thumb">
                                     <span class="ver_hold"></span>
-                                    <a href="#" class="ver_container"><img
+                                    <a  class="ver_container"><img
                                             src="{{ asset('backend/images/stores')}}/{{ $data->store_logo }}"
                                             alt="$COUPON_TITLE"></a>
                                 </div>
@@ -309,8 +274,20 @@
                             <div class="coupon-price">{{  $data->coupon_title }}</div>
                             <div class="coupon-desc">{{  $data->coupon_desc }}</div>
                             <div class="time-left">9 days 4 hours left</div>
-                            <a class="btn btn-my btn-take-coupon" target="blank"
-                                href="{{  $data->store_url }}">{{ !empty($data->coupon_code) ? 'View Code' : 'View Deal' }}</a>
+                            
+                            @php
+  $storeUrl = Str::startsWith($data->store_url, ['http://', 'https://']) 
+                ? $data->store_url 
+                : 'https://' . $data->store_url;  
+@endphp
+                                 <a class="btn btn-my btn-take-coupon"
+   data-title="{{ $data->coupon_title }}"
+   data-code="{{ $data->coupon_code }}"
+   data-storeurl="{{ $storeUrl }}"
+   href=""
+   onclick="openCouponModal(event)">
+   {{ !empty($data->coupon_code) ? 'View Code' : 'View Deal' }}
+</a>
                         </div>
                         <i class="stick-lbl hot-sale"></i>
                     </div><!--end: .coupon-item -->
@@ -340,7 +317,7 @@
             <div class="grid_12">
                 <h3 class="title-block has-link" style="text-align:center;">
                     Popular Categories
-                    <a href="#" class="link-right">See all <i class="pick-right"></i></a>
+                    <a href="/categories" class="link-right">See all <i class="pick-right"></i></a>
                 </h3>
             </div>
             <div class="block-content list-brand clearfix">
@@ -367,6 +344,51 @@
 
     </div>
 
+<script>
+  function closeModal() {
+    document.getElementById('customModal').style.display = 'none';
+  }
 
+  function openCouponModal(event) {
+    event.preventDefault();
+
+    var btn = event.currentTarget;
+    var title = btn.getAttribute("data-title");
+    var code = btn.getAttribute("data-code");
+    var storeUrl = btn.getAttribute("data-storeurl");
+
+    document.getElementById("modalCouponTitle").innerText = title;
+    document.getElementById("couponCodeInput").value = code;
+
+    if (code && code.trim() !== "") {
+      document.getElementById("codeSection").style.display = "block";
+      document.getElementById("dealSection").style.display = "none";
+    } else {
+      document.getElementById("codeSection").style.display = "none";
+      document.getElementById("dealSection").style.display = "block";
+    }
+
+    document.getElementById("customModal").style.display = "block";
+
+    // Optional: Open store link
+    if (storeUrl) {
+      window.open(storeUrl, "_blank");
+    }
+  }
+
+  function copyCode() {
+    var copyText = document.getElementById("couponCodeInput");
+    copyText.select();
+    document.execCommand("copy");
+
+    var copyBtn = document.querySelector('#codeSection button');
+    var originalText = copyBtn.innerText;
+    copyBtn.innerText = "Copied!";
+    
+    setTimeout(() => {
+      copyBtn.innerText = originalText;
+    }, 3000);
+  }
+</script>
 
 @endsection

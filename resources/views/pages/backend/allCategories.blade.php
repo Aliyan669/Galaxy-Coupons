@@ -40,10 +40,10 @@
 
                             <div class="form-group">
                                 <label>Meta Description</label>
-                                <input type="text"  required name="e_meta_desc" id="e_meta_desc" class="form-control">
+                                <textarea type="text"  required name="e_meta_desc" id="e_meta_desc" class="form-control"></textarea>
                             </div>
 
-                            <div class="section-title" style="font-size:12px; ">Category Logo</div>
+                            <div class="section-title" style="font-size:12px; ">Category Image &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Size Should be 715px by 400px)</div>
                             <div class="custom-file">
                                 <label>Meta Description</label>
                                 <input type="file" class="custom-file-input" name="e_cate_logo" id="customFile">
@@ -147,8 +147,8 @@
                             </td>
                             <td>{{ \Carbon\Carbon::parse($data->created_at)->format('Y-m-d') }}</td>
                             
-                            <td><button type="button" class="btn btn btn-danger deleteBtn mr-3" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
-                            <button type="button" class="btn btn-success edit" id="{{ $data->id }}" data-toggle="modal" data-target="#editModal">Edit</button></td>
+                            <td><button type="button" class="btn btn btn-danger deleteBtn mr-2 mt-1 mb-1" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
+                            <button type="button" class="btn btn-success mt-1 mb-1 edit" id="{{ $data->id }}" data-toggle="modal" data-target="#editModal">Edit</button></td>
                           </tr>
                               @php
                 $count++;

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Galaxy Coupon</title>
+    <title>{{ $site_content->site_title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="{{ asset('frontend/css/font.css')}}" />
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/style-dark.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style-gray.css')}}">
+    <link rel="shortcut icon" href="{{ asset('backend/images/uploads/'.$site_content->favicon_logo) }}" type="image/x-icon">
     <!--[if IE 9]>
     <link rel="stylesheet" href="css/ie9.css"/>
     <![endif]-->
@@ -41,12 +42,12 @@
                             <div class="header-content clearfix">
                                 <h1 id="logo" class="rs">
                                     <a href="/">
-                                        <img style="max-width:50%" src="{{ asset('frontend/images/galaxylogo.png')}}"
+                                        <img style="max-width:50%" src="{{ asset('backend/images/uploads/'.$site_content->site_logo) }}"
                                             alt="$SITE_NAME" />
                                     </a>
                                 </h1>
-                                <a id="sys_head_login" style="color: #6375ff;"
-                                    class="btn btn-green type-login btn-login" href="#">Login</a>
+                                <a style="color: #6375ff; margin-top:2px;"
+                                    class="btn btn-green type-login btn-login" href="{{ route('admin.login') }}">Login</a>
                                 <nav class="main-nav">
                                     <ul id="main-menu" class="nav nav-horizontal clearfix">
                                         <li class="{{ Request::is('/') ? 'active' : '' }}">
@@ -217,14 +218,8 @@
                         <div class="container_grid clearfix">
                             <div class="grid_3">
                                 <div class="company-info">
-                                    <img src="{{ asset('frontend/images/galaxylogo.png')}}" alt="CouponDay" />
-                                    <p class="rs">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                                        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
-                                        wisi enim ad minim veniam, quis nostrud</p>
-                                    <p class="rs">
-                                        1200 Balh Blah Avenue <br />
-                                        Hanoi, Vietnam 12137
-                                    </p>
+                                    <img src="{{ asset('backend/images/uploads/'.$site_content->footer_logo) }}" alt="CouponDay" />
+                                    <p class="rs">{{ $site_content->site_about }}</p>
                                 </div>
                             </div>
                             <div class="grid_3">
@@ -297,7 +292,7 @@
                                 <a href="#">Contact</a>
                             </div>
                             <div class="copyright">
-                                <a href="templateshub.net">Templates Hub</a>
+                                <a href="/">Galaxy Coupon</a>
                             </div>
                         </div>
                     </div>

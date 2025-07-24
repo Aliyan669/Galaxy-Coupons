@@ -37,7 +37,8 @@
 
                             <div class="form-group">
                                 <label>Store Description</label>
-                                <input required name="e_store_desc" id="e_store_desc" type="text" class="form-control">
+                                <textarea required name="e_store_desc" id="e_store_desc" type="text" class="form-control">
+                                  </textarea>
                             </div>
 
                                 <div class="form-group">
@@ -52,12 +53,13 @@
 
                             <div class="form-group">
                                 <label>Meta Description</label>
-                                <input type="text"  required name="e_meta_desc" id="e_meta_desc" class="form-control">
+                                <textarea type="text"  required name="e_meta_desc" id="e_meta_desc" class="form-control">
+                                  </textarea>
                             </div>
 
                        <div class="row">
                                     <div class="col-12 col-md-12 col-lg-6" style="margin-top:10px;">
-                                        <div class="section-title" style="font-size:12px; ">Store Logo</div>
+                                        <div class="section-title" style="font-size:12px; ">Store Logo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Size Should be 200px by 200px)</div>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="e_store_logo" id="customFile">
                                             <label class="custom-file-label" for="customFile">Choose file</label>
@@ -104,7 +106,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Category</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Store</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -229,9 +231,9 @@
                             </td>
                             <td>{{ \Carbon\Carbon::parse($data->created_at)->format('Y-m-d') }}</td>
                             
-                            <td><button type="button" class="btn btn btn-danger deleteBtn mr-2" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
-                            <button type="button" class="btn btn-success edit mr-2" id="{{ $data->id }}" data-toggle="modal" data-target="#editModal">Edit</button>
-                           <button type="button" data-toggle="modal" data-id="{{ $data->id }}" data-target="#sortModal" class="btn btn-info sort-btn">Sort</button></td>
+                            <td ><button type="button" class="btn btn btn-danger deleteBtn mr-2 mt-1 mb-1" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
+                            <button type="button" class="btn btn-success edit mr-2 mt-1 mb-1" id="{{ $data->id }}" data-toggle="modal" data-target="#editModal">Edit</button>
+                           <button type="button" data-toggle="modal" data-id="{{ $data->id }}" data-target="#sortModal" class="btn btn-info sort-btn mt-1 mb-1">Sort</button></td>
                           </tr>
                               @php
                 $count++;

@@ -18,7 +18,9 @@ class BlogController extends BaseAdminController
     LEFT JOIN categories ON blogs.cate_id = categories.id
 ');
         $categories = DB::table('categories')->select('cate_name', 'id')->get();
-        return view('pages.backend.allBlog', compact('blogs', 'categories'));
+
+        $site_content = DB::table('site_contents')->first();
+        return view('pages.backend.allBlog', compact('blogs', 'categories' , 'site_content'));
     }
 
     /**
@@ -27,7 +29,8 @@ class BlogController extends BaseAdminController
     public function create()
     {
         $categories = DB::table('categories')->select('cate_name', 'id')->get();
-        return view('pages.backend.addBlog', compact('categories'));
+        $site_content = DB::table('site_contents')->first();
+        return view('pages.backend.addBlog', compact('categories','site_content'));
     }
 
     /**

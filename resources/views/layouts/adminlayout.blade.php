@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title> Admin - Galaxy Coupon</title>
+    <title> Admin - {{ $site_content->site_title }}</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/app.min.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/assets/bundles/summernote/summernote-bs4.css')}}">
@@ -22,13 +22,14 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css')}}">
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/custom.css')}}">
-    <link rel='shortcut icon' type='image/x-icon' href='{{ asset('backend/assets/img/favicon.ico')}}' />
+    <link rel='shortcut icon' type='image/x-icon'
+        href='{{ asset('backend/images/uploads/' . $site_content->favicon_logo) }}' />
 </head>
 
 <body>
-     @yield('content')
+    @yield('content')
     <div class="loader"></div>
-   
+
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
@@ -157,12 +158,12 @@
                                 src="{{ asset('backend/assets/img/user.png')}}" class="user-img-radious-style"> <span
                                 class="d-sm-none d-lg-inline-block"></span></a>
                         <div class="dropdown-menu dropdown-menu-right pullDown">
-                            <div class="dropdown-title">Hello Sarah Smith</div>
-                            <a href="profile.html" class="dropdown-item has-icon"> <i class="far
+                            <div class="dropdown-title">Hello Galaxy Coupon</div>
+                            <a class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profile
-                            </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
+                            </a> <a class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                                 Activities
-                            </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
+                            </a> <a class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
                                 Settings
                             </a>
                             <div class="dropdown-divider"></div>
@@ -177,7 +178,7 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="admin">
+                        <a href="/admin">
                             <img alt="image" src="{{ asset('backend/assets/img/galaxy-logo.png')}}"
                                 class="header-logo" />
                             <!-- <span class="logo-name font-15">Galaxy Coupons</span> -->
@@ -238,11 +239,13 @@
                                         href="/admin/banner/create">Add Banner</a></li>
                             </ul>
                         </li>
-        
-                        <li class="{{ Request::is('admin/site-content') ? 'active' : '' }}"><a class="nav-link " href="/admin/site-content"><i data-feather="sliders"></i><span>Site Content
+
+                        <li class="{{ Request::is('admin/site-content') ? 'active' : '' }}"><a class="nav-link "
+                                href="/admin/site-content"><i data-feather="sliders"></i><span>Site Content
                                 </span></a></li>
 
-                        <li class="{{ Request::is('admin/user') ? 'active' : '' }}"><a class="nav-link " href="/admin/user"><i data-feather="user-check"></i><span>User
+                        <li class="{{ Request::is('admin/user') ? 'active' : '' }}"><a class="nav-link "
+                                href="/admin/user"><i data-feather="user-check"></i><span>User
                                 </span></a></li>
                     </ul>
                 </aside>
@@ -363,17 +366,17 @@
         </div>
     </div>
 
-        <!-- At bottom of your Blade -->
-<script>
-    document.querySelectorAll('.custom-file-input').forEach(function (input) {
-        input.addEventListener('change', function (e) {
-            let fileName = e.target.files[0]?.name;
-            if (fileName) {
-                e.target.nextElementSibling.innerText = fileName;
-            }
+    <!-- At bottom of your Blade -->
+    <script>
+        document.querySelectorAll('.custom-file-input').forEach(function (input) {
+            input.addEventListener('change', function (e) {
+                let fileName = e.target.files[0]?.name;
+                if (fileName) {
+                    e.target.nextElementSibling.innerText = fileName;
+                }
+            });
         });
-    });
-</script>
+    </script>
 
     <!-- General JS Scripts -->
     <script src="{{ asset('backend/assets/js/app.min.js')}}"></script>

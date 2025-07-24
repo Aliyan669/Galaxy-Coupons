@@ -12,7 +12,8 @@ class BannerController extends BaseAdminController
     public function index()
     {
          $banner = DB::select("select * from banners");
-        return view('pages.backend.allbanner', compact('banner'));
+         $site_content = DB::table('site_contents')->first();
+        return view('pages.backend.allbanner', compact('banner','site_content' ));
     }
 
     /**
@@ -20,7 +21,8 @@ class BannerController extends BaseAdminController
      */
     public function create()
     {
-       return view('pages.backend.addbanner', );
+        $site_content = DB::table('site_contents')->first();
+       return view('pages.backend.addbanner',compact('site_content') );
     }
 
     /**

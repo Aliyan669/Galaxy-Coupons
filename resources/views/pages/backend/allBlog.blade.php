@@ -54,7 +54,7 @@
                     </div>
                          
                     <div class="form-group ">
-                      <label >Blog Image</label>
+                      <label >Blog  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Size Should be 700px by 310px)</label>
                       
                         <div id="image-preview" class="image-preview">
                           <label for="image-upload" id="image-label">Choose File</label>
@@ -89,7 +89,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Category</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Blog</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -117,7 +117,7 @@
               <div class="col-12">
                 <div class="card card-primary" >
                   <div class="card-header">
-                    <h4>All Stores</h4>
+                    <h4>All Blog</h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -159,12 +159,12 @@
                             <td>{{  $data->cate_name }}</td>
                            <td><p style="font-size:12px;">{!!   $data->blog_content !!}</p></td>
                             <td>
-                              <img alt="image" src="{{ asset('backend/images/blogs')}}/{{ $data->blog_logo }}" width="35">
+                              <img alt="image" src="{{ asset('backend/images/blogs')}}/{{ $data->blog_logo }}" width="70">
                             </td>
                             <td>{{ \Carbon\Carbon::parse($data->created_at)->format('Y-m-d') }}</td>
                             
-                            <td><button type="button" class="btn btn btn-danger deleteBtn mr-2" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
-                            <button type="button" class="btn btn-success edit mr-2" id="{{ $data->id }}" data-toggle="modal" data-target="#editModal">Edit</button>
+                            <td><button type="button" class="btn btn btn-danger deleteBtn mr-2 mt-1 mb-1" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
+                            <button type="button" class="btn btn-success edit mr-2 mt-1 mb-1" id="{{ $data->id }}" data-toggle="modal" data-target="#editModal">Edit</button></td>
                           </tr>
                               @php
                 $count++;

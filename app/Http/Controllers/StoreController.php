@@ -14,12 +14,13 @@ class StoreController extends BaseAdminController
     public function index()
     {
         $store = DB::select('
-    SLECET stores.*, categories.cate_name
+    SELECT stores.*, categories.cate_name
     FROM stores
     LEFT JOIN categories ON stores.cate_id = categories.id
 ');
         $categories = DB::table('categories')->select('cate_name', 'id')->get();
-        return view('pages.backend.allStore', compact('store', 'categories'));
+        $site_content = DB::table('site_contents')->first();
+        return view('pages.backend.allStore', compact('store', 'categories' , 'site_content'));
     }
 
     /**
@@ -27,8 +28,9 @@ class StoreController extends BaseAdminController
      */
     public function create()
     {
+        $site_content = DB::table('site_contents')->first();
         $categories = DB::table('categories')->select('cate_name', 'id')->get();
-        return view('pages.backend.addStore', compact('categories'));
+        return view('pages.backend.addStore', compact('categories' ,'site_content'));
 
 
     }
@@ -39,10 +41,10 @@ class StoreController extends BaseAdminController
     public function store(Request $request)
     {
 
-        $slug = Str::slug($request->store_name); 
         $store_name = $request->store_name;
         $store_desc = $request->store_desc;
-        // $store_url = $request->store_url;
+        $store_url = $request->store_url;
+        $slug = Str::slug($request->store_name); 
         
         $meta_title = $request->meta_title;
         $meta_desc = $request->meta_desc;
@@ -53,7 +55,7 @@ class StoreController extends BaseAdminController
         $request->store_logo->move(public_path('backend/images/stores'), $logo);
 
 
-        DB::select('INSERT INTO `stores`(`store_name`, `store_desc`,`store_url`,`meta_title`, `meta_desc`,`cate_id`, `store_logo`, `created_at`, `updated_at`) VALUES ("' . $store_name . '","' . $store_desc . '","' . $slug . '", "' . $meta_title . '" ,"' . $meta_desc . '" ,"' . $category . '" ,"' . $logo . '", CURRENT_TIMESTAMP, NULL);');
+        DB::select('INSERT INTO `stores`(`store_name`, `store_desc`,`store_url`,`slug`,`meta_title`, `meta_desc`,`cate_id`, `store_logo`, `created_at`, `updated_at`) VALUES ("' . $store_name . '","' . $store_desc . '","' . $store_url . '","' . $slug . '", "' . $meta_title . '" ,"' . $meta_desc . '" ,"' . $category . '" ,"' . $logo . '", CURRENT_TIMESTAMP, NULL);');
 
         return redirect('/admin/store/create')->with([
             'message' => 'Stores added Successfully!',
@@ -89,6 +91,7 @@ class StoreController extends BaseAdminController
         $title = $request->e_meta_title;
         $desc = $request->e_meta_desc;
         $category = $request->e_category;
+        $slug = Str::slug($request->e_store_name);
 
         $store = DB::table('stores')->where('id', $id)->first();
         if (!$store) {
@@ -104,7 +107,7 @@ class StoreController extends BaseAdminController
         }
 
 
-        DB::select('UPDATE `stores` SET `store_name`= "' . $name . '",`store_desc`= "' . $store_desc . '", `store_url`= "' . $url . '",`meta_title`= "' . $title . '",`meta_desc`= "' . $desc . '",`store_logo`="' . $editlogo . '", `cate_id`= "' . $category . '" ,`updated_at`= NOW() WHERE id = "' . $id . '"');
+        DB::select('UPDATE `stores` SET `store_name`= "' . $name . '",`store_desc`= "' . $store_desc . '", `store_url`= "' . $url . '", `slug`= "' . $slug . '",`meta_title`= "' . $title . '",`meta_desc`= "' . $desc . '",`store_logo`="' . $editlogo . '", `cate_id`= "' . $category . '" ,`updated_at`= NOW() WHERE id = "' . $id . '"');
 
 
         return redirect('/admin/store/')->with(key: [

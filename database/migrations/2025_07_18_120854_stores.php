@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('store_name',100);
             $table->text('store_desc');
             $table->string('store_url',256);
+            $table->string('slug',256);
             $table->text('meta_title');
             $table->text('meta_desc');
             $table->unsignedBigInteger('cate_id')->unsigned(); 

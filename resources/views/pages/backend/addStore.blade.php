@@ -29,7 +29,7 @@
 
                                 <div class="form-group">
                                     <label>Store Description</label>
-                                    <input required name="store_desc" type="text" class="form-control">
+                                    <textarea required name="store_desc" type="text" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Store Url</label>
@@ -38,17 +38,21 @@
 
                                 <div class="form-group">
                                     <label>Meta Title</label>
-                                    <input type="text" required name="meta_title" class="form-control">
+                                    <input type="text"
+                                        value="{{ old('meta_title', $site_content->meta_title ?? 'Enter your Meta Title') }}"
+                                        required name="meta_title" class="form-control">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Meta Description</label>
-                                    <input type="text" required name="meta_desc" class="form-control">
+                                    <textarea type="text" required name="meta_desc"
+                                        class="form-control">{{ old('meta_desc', $site_content->meta_desc ?? 'Enter your Meta Description') }}</textarea>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-lg-6" style="margin-top:-30px;">
-                                        <div class="section-title" style="font-size:12px; ">Store Logo</div>
+                                        <div class="section-title" style="font-size:12px; ">Store Logo
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Size Should be 200px by 200px)</div>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="store_logo" id="customFile">
                                             <label class="custom-file-label" for="customFile">Choose file</label>
@@ -84,7 +88,5 @@
 
         </div>
     </section>
-
-
 
 @endsection

@@ -38,15 +38,10 @@
                             <div class="grid_2 grp-by-alpha">
                                 <div class="head-char" id="char-{{ $letter }}">{{ $letter }}</div>
                                 <div class="list-follow">
-                                    <!-- @foreach($stores as $store)
-                                                            <div><a href="{{ url('/store/'.$store->store_url) }}">
-
-                                                            {{ $store->store_name }}</a></div>
-                                                        @endforeach -->
-
+                                
                                     @foreach($stores as $store)
                                         <div style="width: 150px; text-align: center; margin: 10px 0px; display: inline-block;">
-                                            <a href="{{ url('/store-profile/'.$store->store_url) }}" style="text-decoration: none; ">
+                                            <a href="{{ url('/store-profile/'.$store->slug) }}" style="text-decoration: none; ">
                                                 <img src="{{ asset('backend/images/stores/' . $store->store_logo) }}"
                                                     alt="{{ $store->store_name }}"
                                                     style="width: 140px; height: 140px; object-fit: contain; display: block; margin: 0 auto 8px auto;">

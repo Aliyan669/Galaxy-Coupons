@@ -494,11 +494,11 @@ a.be-fc-default:hover {
 }
 
 .btn.btn-green:hover {
-    background: #FFBE19;
+    background: #ffffff;
 }
 
 .btn.btn-green:active {
-    background: #FF8317;
+    background: #f9f9f9;
 }
 
 .btn.btn-gray {
@@ -2247,7 +2247,7 @@ b {
 .mod-footer .blog-recent a:hover,
 .foot-copyright .left-link a:hover {
     text-decoration: none;
-    color: #FFA43E;
+    color: #ffffff;
 }
 
 .mod-footer .intro-video .wrap-video {

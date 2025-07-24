@@ -118,7 +118,7 @@
               <div class="col-12">
                 <div class="card card-primary" >
                   <div class="card-header">
-                    <h4>All Stores</h4>
+                    <h4>All Coupons</h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -169,8 +169,8 @@
 
                             <td>{{ \Carbon\Carbon::parse($data->created_at)->format('Y-m-d') }}</td>
                             
-                            <td><button type="button" class="btn btn btn-danger deleteBtn mr-2" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
-                            <button type="button" class="btn btn-success edit mr-2" id="{{ $data->id }}" data-toggle="modal" data-target="#editModal">Edit</button>
+                            <td><button type="button" class="btn btn btn-danger deleteBtn mr-2 mt-1 mb-1" data-id="{{ $data->id }}"  data-toggle="modal" data-target="#deleteModal">Delete</button>
+                            <button type="button" class="btn btn-success edit mr-2 mt-1 mb-1"  id="{{ $data->id }}" data-toggle="modal" data-target="#editModal">Edit</button>
                           </tr>
                               @php
                 $count++;

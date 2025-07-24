@@ -1,7 +1,24 @@
 @extends('layouts.homelayout')
 
-
 @section('homeContent')
+
+<!-- Custom Coupon Modal -->
+<div id="customModal" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
+  <div style="width:400px; margin:100px auto; background:#fff; padding:20px; border-radius:8px; text-align:center; position:relative;">
+    <h4 id="modalCouponTitle"  style="margin-bottom:10px; font-size:25px; color: black; "></h4>
+
+    <div id="codeSection" style="display:none;  ">
+      <input type="text" id="couponCodeInput" style="padding:4px 10px; width:50%; text-align: center; font-size:18px; border: none;"> 
+      <button class="btn btn-my btn-take-coupon" style="margin-top: 20px; margin-bottom:25px; margin-left:5px;" onclick="copyCode()">Copy Code</button>
+    </div>
+
+    <div id="dealSection" style="display:none; font-size: 15px; margin-top: 20px; ">
+      <p>This is a deal – no code needed</p>
+    </div>
+    <button class="btn btn-red" onclick="closeModal()" style="margin-top:10px;">Close</button>
+  </div>
+</div>
+
 
         <div class="grid_frame page-content">
             <div class="container_grid">
@@ -19,7 +36,7 @@
                             </div>
                             <div class="brand-desc">
                                 <div class="title-desc">{{ $store->store_name }}</div>
-                                <p class="rs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis metus non nunc iaculis dapibus. Nullam tempus accumsan metus vitae facilisis. Nullam non faucibus nisi, nec auctor neque. Ut consequat consequat purus. Sed vestivbulum viverra nulla vel fermentum. Fusce luctus ultrices lorem, in placerat nibh adipiscing ut. </p>
+                                <p class="rs">{{ $store->store_desc }}</p>
                             </div>
                             <div class="right-counter">
                                 <div class="wrap-content">
@@ -43,7 +60,12 @@
                                         <span class="lbl">Coupons code</span>
                                         <span class="val">31</span>
                                     </div>
-                                    <a class="btn btn-my btn-follow-brand" href='{{ $store->store_url }}'>Follow brand</a>
+                                                                        @php
+  $storeUrl = Str::startsWith($store->store_url, ['http://', 'https://']) 
+                ? $store->store_url 
+                : 'https://' . $store->store_url;
+@endphp
+                                    <a class="btn btn-my btn-follow-brand" href='{{ $storeUrl }}' target="_blank">Follow brand</a>
                                 </div>
                             </div>
                         </div>
@@ -56,13 +78,25 @@
                                     <div class="img-thumb-center">
                                         <div class="wrap-img-thumb">
                                             <span class="ver_hold"></span>
-                                            <a href="#" class="ver_container"><img src="{{ asset('backend/images/stores/' . $store->store_logo) }}" alt="$COUPON_TITLE"></a>
+                                            <a class="ver_container"><img src="{{ asset('backend/images/stores/' . $store->store_logo) }}" alt="$COUPON_TITLE"></a>
                                         </div>
                                     </div>
                                     <div class="coupon-price">{{ $coupon->coupon_title }}</div>
                                     <div class="coupon-desc">{{ $coupon->coupon_desc }}</div>
                                     <div class="time-left">9 days 4 hours left</div>
-                                    <a class="btn btn-my btn-take-coupon" href="#">{{ !empty($coupon->coupon_code) ? 'View Code' : 'View Deal' }}</a>
+                                    @php
+  $storeUrl = Str::startsWith($coupon->store_url, ['http://', 'https://']) 
+                ? $coupon->store_url 
+                : 'https://' . $coupon->store_url;  
+@endphp
+                                 <a class="btn btn-my btn-take-coupon"
+   data-title="{{ $coupon->coupon_title }}"
+   data-code="{{ $coupon->coupon_code }}"
+   data-storeurl="{{ $storeUrl }}"
+   href=""
+   onclick="openCouponModal(event)">
+   {{ !empty($coupon->coupon_code) ? 'View Code' : 'View Deal' }}
+</a>
                                 </div>
                             </div><!--end: .coupon-item -->
 
@@ -95,4 +129,56 @@
             </div>
         </div>
 
+<script>
+  function closeModal() {
+    document.getElementById('customModal').style.display = 'none';
+  }
+
+  function openCouponModal(event) {
+    event.preventDefault();
+
+    var btn = event.currentTarget;
+    var title = btn.getAttribute("data-title");
+    var code = btn.getAttribute("data-code");
+    var storeUrl = btn.getAttribute("data-storeurl");
+
+    document.getElementById("modalCouponTitle").innerText = title;
+    document.getElementById("couponCodeInput").value = code;
+
+    if (code && code.trim() !== "") {
+      document.getElementById("codeSection").style.display = "block";
+      document.getElementById("dealSection").style.display = "none";
+    } else {
+      document.getElementById("codeSection").style.display = "none";
+      document.getElementById("dealSection").style.display = "block";
+    }
+
+    document.getElementById("customModal").style.display = "block";
+
+    // Optional: Open store link
+    if (storeUrl) {
+      window.open(storeUrl, "_blank");
+    }
+  }
+
+  function copyCode() {
+    var copyText = document.getElementById("couponCodeInput");
+    copyText.select();
+    document.execCommand("copy");
+
+    var copyBtn = document.querySelector('#codeSection button');
+    var originalText = copyBtn.innerText;
+    copyBtn.innerText = "Copied!";
+    
+    setTimeout(() => {
+      copyBtn.innerText = originalText;
+    }, 3000);
+  }
+</script>
+
+
+
+
 @endsection
+
+
