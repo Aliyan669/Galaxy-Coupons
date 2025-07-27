@@ -124,14 +124,8 @@
                       <table class="table table-striped" id="table-2">
                         <thead>
                           <tr>
-                            <th class="text-center pt-3">
-                              <div class="custom-checkbox custom-checkbox-table custom-control">
-                                <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad"
-                                  class="custom-control-input" id="checkbox-all">
-                                <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-                              </div>
-                            </th>
-                            <th>S.No</th>
+                            
+                            <th style="padding-left:20px;">S.No</th>
                             <th>Blog Title</th>
                             <th>Blog Category</th>
                             <th>Blog Content</th>
@@ -147,14 +141,7 @@
 @endphp
                                 @foreach ($blogs as $data)
                           <tr>
-                            <td class="text-center pt-2">
-                              <div class="custom-checkbox custom-control">
-                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                                  id="checkbox-{{ $count }}">
-                                <label for="checkbox-{{ $count }}" class="custom-control-label">&nbsp;</label>
-                              </div>
-                            </td>
-                            <td>{{ $count }}</td>
+                            <td style="padding-left:20px;">{{ $count }}</td>
                             <td>{{  $data->blog_title }}</td>
                             <td>{{  $data->cate_name }}</td>
                            <td><p style="font-size:12px;">{!!   $data->blog_content !!}</p></td>

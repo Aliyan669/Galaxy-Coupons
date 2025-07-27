@@ -119,6 +119,7 @@
                 <div class="card card-primary" >
                   <div class="card-header">
                     <h4>All Coupons</h4>
+                     <button id="deleteSelectedBtn" class="btn btn-danger " style="display:none;">Delete Selected</button>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -154,7 +155,7 @@
                             <td class="text-center pt-2">
                               <div class="custom-checkbox custom-control">
                                 <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                                  id="checkbox-{{ $count }}">
+                                  id="checkbox-{{ $count }}" value="{{ $data->id }}">
                                 <label for="checkbox-{{ $count }}" class="custom-control-label">&nbsp;</label>
                               </div>
                             </td>
@@ -281,6 +282,54 @@
                 }
             });
         });
+
+
+        
+        // Show/Hide Delete Selected button based on checkbox selection
+$(document).on('change', 'input[type="checkbox"][data-checkboxes="mygroup"]', function () {
+    let selected = $('input[data-checkboxes="mygroup"]:checked').length;
+    if (selected > 0) {
+        $('#deleteSelectedBtn').show();
+    } else {
+        $('#deleteSelectedBtn').hide();
+    }
+});
+
+$('#deleteSelectedBtn').click(function () {
+    let selectedIds = [];
+    $('input[data-checkboxes="mygroup"]:checked').each(function () {
+        selectedIds.push($(this).val());
+    });
+
+    if (selectedIds.length === 0) {
+        alert('Please select at least one category to delete.');
+        return;
+    }
+
+    if (!confirm("Are you sure you want to delete selected Coupons?")) {
+        return;
+    }
+
+    // ✅ Correct AJAX call
+    $.ajax({
+        url: '/admin/coupon/bulk-delete',
+        method: 'POST',
+        data: {
+            ids: selectedIds
+        },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // ✅ Make sure token is here
+        },
+        success: function (res) {
+            // alert(res.message);
+            location.reload();
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert("Error: " + xhr.status + " - " + xhr.responseText);
+        }
+    });
+});
 
     });
 

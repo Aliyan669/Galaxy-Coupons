@@ -2,8 +2,10 @@
 <html>
 
 <head>
-    <title>{{ $site_content->site_title }}</title>
+    <title>{{ $site_content->site_title ?? 'Not Found' }}</title>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="{{ asset('frontend/css/font.css')}}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.css')}}" />
@@ -16,7 +18,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/style-dark.css')}}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style-gray.css')}}">
-    <link rel="shortcut icon" href="{{ asset('backend/images/uploads/'.$site_content->favicon_logo) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('backend/images/uploads/' . $site_content->favicon_logo) }}"
+        type="image/x-icon">
     <!--[if IE 9]>
     <link rel="stylesheet" href="css/ie9.css"/>
     <![endif]-->
@@ -42,26 +45,32 @@
                             <div class="header-content clearfix">
                                 <h1 id="logo" class="rs">
                                     <a href="/">
-                                        <img style="max-width:50%" src="{{ asset('backend/images/uploads/'.$site_content->site_logo) }}"
+                                        <img style="max-width:50%"
+                                            src="{{ asset('backend/images/uploads/' . $site_content->site_logo) }}"
                                             alt="$SITE_NAME" />
                                     </a>
                                 </h1>
-                                <a style="color: #6375ff; margin-top:2px;"
-                                    class="btn btn-green type-login btn-login" href="{{ route('admin.login') }}">Login</a>
+                                <!-- <a style="color: #6375ff; margin-top:2px;"
+                                    class="btn btn-green type-login btn-login" href="{{ route('admin.login') }}">Login</a> -->
                                 <nav class="main-nav">
                                     <ul id="main-menu" class="nav nav-horizontal clearfix">
                                         <li class="{{ Request::is('/') ? 'active' : '' }}">
                                             <a href="/">Home</a>
                                         </li>
-                                        <li class="{{ Request::is('store') ? 'active' : '' }}">
-                                            <a href="/store">Stores</a>
+
+                                        <li class="{{ Request::is('entertainment') ? 'active' : '' }}">
+                                            <a href="/entertainment">Entertainment</a>
                                         </li>
 
-                                        <li class="{{ Request::is('blogs') ? 'active' : '' }}">
-                                            <a href="/blogs">Blogs</a>
+                                        <li class="{{ Request::is('apparel') ? 'active' : '' }}">
+                                            <a href="/apparel">Apparel & Clothing</a>
                                         </li>
+                                        <li class="{{ Request::is('travel') ? 'active' : '' }}">
+                                            <a href="/travel">Travel</a>
+                                        </li>
+
                                         <li class="{{ Request::is('categories') ? 'active' : '' }}">
-                                            <a href="/categories">Categories</a>
+                                            <a href="/categories">All Categories</a>
                                         </li>
                                     </ul>
                                     <a id="sys_btn_toogle_menu" class="btn-toogle-res-menu" href="#alternate-menu"></a>
@@ -218,7 +227,8 @@
                         <div class="container_grid clearfix">
                             <div class="grid_3">
                                 <div class="company-info">
-                                    <img src="{{ asset('backend/images/uploads/'.$site_content->footer_logo) }}" alt="CouponDay" />
+                                    <img src="{{ asset('backend/images/uploads/' . $site_content->footer_logo) }}"
+                                        alt="CouponDay" />
                                     <p class="rs">{{ $site_content->site_about }}</p>
                                 </div>
                             </div>
@@ -292,7 +302,7 @@
                                 <a href="#">Contact</a>
                             </div>
                             <div class="copyright">
-                                <a href="/">Galaxy Coupon</a>
+                                © Copyrights {{ date('Y') }} <a href="/">{{ $site_content->site_title ?? 'Not Found' }} </a>All Rights Reserved.
                             </div>
                         </div>
                     </div>

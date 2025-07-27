@@ -20,7 +20,7 @@ class CouponController extends BaseAdminController
 ');
         $stores = DB::table('stores')->select('store_name', 'id')->get();
         $site_content = DB::table('site_contents')->first();
-        return view('pages.backend.allCoupon', compact('stores', 'coupons' ,'site_content'));
+        return view('pages.backend.allCoupon', compact('stores', 'coupons', 'site_content'));
     }
 
     /**
@@ -30,7 +30,7 @@ class CouponController extends BaseAdminController
     {
         $site_content = DB::table('site_contents')->first();
         $store = DB::table('stores')->select('store_name', 'id')->get();
-        return view('pages.backend.addCoupon', compact('store','site_content'));
+        return view('pages.backend.addCoupon', compact('store', 'site_content'));
     }
 
     /**
@@ -115,4 +115,43 @@ class CouponController extends BaseAdminController
             return response()->json(['message' => 'Store not found'], 404);
         }
     }
+
+
+
+    public function countClick($id)
+    {
+        // Coupon ko find karo
+        $coupon = DB::table('coupons')->where('id', $id)->first();
+
+        if ($coupon) {
+            $newCount = $coupon->click_count + 1;
+
+            DB::table('coupons')->where('id', $id)->update([
+                'click_count' => $newCount
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'clicks' => $newCount
+            ]);
+        }
+
+        return response()->json(['status' => 'error'], 404);
+    }
+
+
+    public function bulkDelete(Request $request)
+    {
+        $ids = $request->ids;
+
+        if (empty($ids)) {
+            return response()->json(['message' => 'No Coupons IDs provided.'], 400);
+        }
+
+        DB::table('coupons')->whereIn('id', $ids)->delete();
+
+        return response()->json(['message' => 'Selected Coupons deleted successfully.']);
+    }
+
+
 }

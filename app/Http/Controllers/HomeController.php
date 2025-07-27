@@ -14,14 +14,17 @@ class HomeController extends Controller
     FROM coupons
     LEFT JOIN stores ON coupons.store_id = stores.id LIMIT 8
 ');
-        $blogs = DB::select("select * from blogs LIMIT 3");
+        $top_blogs = DB::select("select * from blogs LIMIT 2");
+        $site_blogs = DB::select("select * from blogs LIMIT 3");
+        $latest_blogs = DB::select("select * from blogs LIMIT 6");
+        $blogs = DB::select("select * from blogs LIMIT 4");
 
         $categories = DB::select("select * from categories LIMIT 6");
         $stores = DB::select("select * from stores LIMIT 6");
 
         $site_content = DB::table('site_contents')->first();
 
-        return view('pages.frontend.home', compact('blogs', 'categories', 'stores', 'coupons', 'site_content'));
+        return view('pages.frontend.home', compact('top_blogs', 'site_blogs', 'latest_blogs', 'blogs', 'categories', 'stores', 'coupons', 'site_content'));
     }
 
 
@@ -63,6 +66,41 @@ class HomeController extends Controller
 
 
 
+    public function Entertainment()
+    {
+
+        $site_blogs = DB::select("select * from blogs LIMIT 6");
+        $blogs = DB::select("select * from blogs LIMIT 4");
+
+
+        $site_content = DB::table('site_contents')->first();
+        return view('pages.frontend.entertainment', compact('site_blogs', 'site_content', 'blogs'));
+    }
+
+    public function Apparel()
+    {
+
+        $site_blogs = DB::select("select * from blogs LIMIT 6");
+        $blogs = DB::select("select * from blogs LIMIT 4");
+
+
+        $site_content = DB::table('site_contents')->first();
+        return view('pages.frontend.apparel', compact('site_blogs', 'site_content', 'blogs'));
+    }
+
+
+    public function Travel()
+    {
+
+        $site_blogs = DB::select("select * from blogs LIMIT 6");
+        $blogs = DB::select("select * from blogs LIMIT 4");
+
+
+        $site_content = DB::table('site_contents')->first();
+        return view('pages.frontend.travel', compact('site_blogs', 'site_content', 'blogs'));
+    }
+
+
     public function Categories()
     {
         $categories = DB::select("select * from categories");
@@ -73,7 +111,7 @@ class HomeController extends Controller
     }
 
 
-    
+
     public function StoreProfile($slug)
     {
         // 1. Slug se store dhoondo
@@ -92,5 +130,16 @@ class HomeController extends Controller
 
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.store_profile', compact('store', 'coupons', 'site_content'));
+    }
+
+    public function BlogDetail($slug)
+    {
+        $site_content = DB::table('site_contents')->first();
+        $site_blogs = DB::select("select * from blogs LIMIT 4");
+        $blog_detail = DB::table('blogs')->where('slug', $slug)->first();
+        if (!$blog_detail) {
+            abort(404); // agar store nahi mila
+        }
+        return view('pages.frontend.blog_detail', compact('site_content', 'site_blogs', 'blog_detail'));
     }
 }

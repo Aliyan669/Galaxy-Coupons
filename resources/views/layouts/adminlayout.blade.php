@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title> Admin - {{ $site_content->site_title }}</title>
+    <title> Admin - {{ $site_content->site_title ?? 'Not Found' }}</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/app.min.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/assets/bundles/summernote/summernote-bs4.css')}}">

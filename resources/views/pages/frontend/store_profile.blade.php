@@ -84,6 +84,8 @@
                                     <div class="coupon-price">{{ $coupon->coupon_title }}</div>
                                     <div class="coupon-desc">{{ $coupon->coupon_desc }}</div>
                                     <div class="time-left">9 days 4 hours left</div>
+                                    <p class="click-count" id="click-count-{{ $coupon->id }}">
+   {{ $coupon->click_count +10 }} times used</p>
                                     @php
   $storeUrl = Str::startsWith($coupon->store_url, ['http://', 'https://']) 
                 ? $coupon->store_url 
@@ -94,7 +96,7 @@
    data-code="{{ $coupon->coupon_code }}"
    data-storeurl="{{ $storeUrl }}"
    href=""
-   onclick="openCouponModal(event)">
+   onclick="openCouponModal(event,{{ $coupon->id }})">
    {{ !empty($coupon->coupon_code) ? 'View Code' : 'View Deal' }}
 </a>
                                 </div>
@@ -134,7 +136,7 @@
     document.getElementById('customModal').style.display = 'none';
   }
 
-  function openCouponModal(event) {
+  function openCouponModal(event , couponId) {
     event.preventDefault();
 
     var btn = event.currentTarget;
@@ -154,6 +156,23 @@
     }
 
     document.getElementById("customModal").style.display = "block";
+
+      // 👉 Track click via AJAX
+fetch(`/coupon-click/${couponId}`, {
+  method: "POST",
+  headers: {
+    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({}) // 👈 Required for Laravel to read request correctly
+})
+  .then(response => response.json())
+  .then(data => {
+    if(data.status === 'success') {
+      const countText = document.getElementById(`click-count-${couponId}`);
+      countText.innerText = `${data.clicks} times used`;
+    }
+  });
 
     // Optional: Open store link
     if (storeUrl) {

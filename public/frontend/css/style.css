@@ -2639,6 +2639,7 @@ b {
 .mod-breadcrumb,
 .mod-breadcrumb a {
     font-family: "Open Sans", sans-serif;
+        color: #3d5366;
 }
 
 .mod-breadcrumb span {
@@ -3467,14 +3468,15 @@ b {
 
 .mod-blog-detail .right-date {
     float: right;
-    background: #F2F2F2;
+    background: #6375ff;
     text-align: center;
     width: 14.49275362318841%;
     margin-top: 5px;
+     color: #ffffff;
 }
 
 .mod-blog-detail .right-date .day {
-    color: #888888;
+    color: #ffffff;
     font-size: 3.846153846153846em;
     line-height: 1em;
     display: block;

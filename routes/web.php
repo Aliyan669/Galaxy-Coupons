@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\bannerController;
 use App\Http\Controllers\BlogController;
@@ -17,6 +16,11 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', "Home");
     Route::get('/store', "Stores");
     Route::get('/blogs', "Blogs");
+    Route::get('/blog-detail/{slug}', "BlogDetail");
+    Route::get('/entertainment', "Entertainment");
+    Route::get('/apparel', "Apparel");
+    Route::get('/travel', "Travel");
+
     Route::get('/categories', "Categories");
     Route::get('/store-profile/{slug}', "StoreProfile");
 });
@@ -25,6 +29,8 @@ Route::get('/admin', [AdminController::class, "Home"]);
 Route::resource('/admin/categories', CategoriesController::class);
 Route::resource('/admin/store', StoreController::class);
 Route::resource('/admin/coupon', CouponController::class);
+Route::post('/admin/coupon/bulk-delete', [CouponController::class, 'bulkDelete']);
+Route::post('/coupon-click/{id}', [CouponController::class, 'countClick']);
 Route::resource('/admin/blog', BlogController::class);
 Route::resource('/admin/banner', BannerController::class);
 

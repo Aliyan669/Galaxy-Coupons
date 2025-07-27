@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str; // File ke top me likhna zaroori hai
 
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class BlogController extends BaseAdminController
         $categories = DB::table('categories')->select('cate_name', 'id')->get();
 
         $site_content = DB::table('site_contents')->first();
-        return view('pages.backend.allBlog', compact('blogs', 'categories' , 'site_content'));
+        return view('pages.backend.allBlog', compact('blogs', 'categories', 'site_content'));
     }
 
     /**
@@ -30,7 +31,7 @@ class BlogController extends BaseAdminController
     {
         $categories = DB::table('categories')->select('cate_name', 'id')->get();
         $site_content = DB::table('site_contents')->first();
-        return view('pages.backend.addBlog', compact('categories','site_content'));
+        return view('pages.backend.addBlog', compact('categories', 'site_content'));
     }
 
     /**
@@ -41,16 +42,16 @@ class BlogController extends BaseAdminController
         $blog_title = $request->blog_title;
         $category = $request->category;
         $blog_content = $request->blog_content;
-
+        $slug = Str::slug($request->blog_title);
         // Image Upload
         $logo = time() . '.' . $request->blog_image->extension();
         $request->blog_image->move(public_path('backend/images/blogs'), $logo);
 
         // Safe insert using parameter binding to avoid SQL injection and syntax errors
-        DB::insert('INSERT INTO blogs (blog_title, cate_id, blog_content, blog_logo, created_at, updated_at)
-                VALUES (?, ?, ?, ?, NOW(), NULL)',
-            [$blog_title, $category, $blog_content, $logo]
-        );
+       DB::insert('INSERT INTO blogs (blog_title, slug, cate_id, blog_content, blog_logo, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, NOW(), NULL)',
+    [$blog_title, $slug, $category, $blog_content, $logo]
+);
 
         return redirect('/admin/blog/create')->with([
             'message' => 'Blog added Successfully!',
@@ -83,6 +84,7 @@ class BlogController extends BaseAdminController
         $blog_title = $request->e_blog_title;
         $category = $request->e_category;
         $blog_content = $request->e_blog_content;
+        $slug = Str::slug($request->e_blog_title);
 
         $blogs = DB::table('blogs')->where('id', $id)->first();
         if (!$blogs) {
@@ -98,8 +100,8 @@ class BlogController extends BaseAdminController
         }
 
         DB::update(
-            'UPDATE blogs SET blog_title = ?, cate_id = ?, blog_content = ?, blog_logo = ?, updated_at = NOW() WHERE id = ?',
-            [$blog_title, $category, $blog_content, $editlogo, $id]
+            'UPDATE blogs SET blog_title = ?, slug = ?,cate_id = ?, blog_content = ?, blog_logo = ?, updated_at = NOW() WHERE id = ?',
+            [$blog_title, $slug, $category, $blog_content, $editlogo, $id]
         );
 
         return redirect('/admin/blog/')->with(key: [

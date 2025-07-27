@@ -17,12 +17,12 @@
             <div class="block-content list-brand clearfix">
 
                 @foreach ($categories as $data)
-                    <div class="brand-item grid_4">
+                    <div class="brand-item grid_3">
                         <div class="brand-content">
                             <div class="brand-logo">
                                 <div class="wrap-img-logo">
                                     <span class="ver_hold"></span>
-                                    <a href="#" class="ver_container"><img
+                                    <a class="ver_container"><img
                                             src="{{ asset('backend/images/categories')}}/{{ $data->cate_logo }}"
                                             alt="$BRAND_TITLE"> </a>
                                 </div>
@@ -52,7 +52,5 @@
             </div>
         </div><!--end: .mod-email-newsletter-->
     </div>
-
-
 
 @endsection

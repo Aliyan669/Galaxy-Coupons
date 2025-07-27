@@ -13,7 +13,7 @@ class CategoriesController extends BaseAdminController
     {
         $site_content = DB::table('site_contents')->first();
         $categories = DB::select("select * from categories");
-        return view('pages.backend.allCategories', compact('categories' ,'site_content'));
+        return view('pages.backend.allCategories', compact('categories', 'site_content'));
     }
 
     /**
@@ -22,7 +22,7 @@ class CategoriesController extends BaseAdminController
     public function create()
     {
         $site_content = DB::table('site_contents')->first();
-        return view('pages.backend.addCategories' , compact('site_content'));
+        return view('pages.backend.addCategories', compact('site_content'));
     }
 
     /**

@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->engine = "InnoDB";
             $table->id()->autoIncrement()->primary();
             $table->string('blog_title', 256);
+            $table->string('slug',256);
             $table->unsignedBigInteger('cate_id')->unsigned();
             $table->foreign('cate_id')->references('id')->on('categories');
             $table->text('blog_content');
