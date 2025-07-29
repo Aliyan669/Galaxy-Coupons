@@ -3,7 +3,6 @@
 
 @section('homeContent')
 
-
         <!-- Edit modal -->
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
           aria-hidden="true">
@@ -201,9 +200,6 @@
                           </tr>
                         </thead>
                         <tbody>
-                          
-                          
-                          
 @php
     $count = 1;
 @endphp
@@ -366,8 +362,6 @@ $('#saveSortBtn').click(function () {
                 location.reload();
             });
         });
-
-
 
 
 

@@ -123,54 +123,7 @@
                                     <i class="line-sep"></i>
                                 </div>
                             </div><!--end: Login panel -->
-                            <div class="mod-register">
-                                <h3 class="rs title-mod">Hello pretty! Welcome to Couponday.com</h3>
-                                <div class="desc-reg">Sign up for free and get exclusive access to members-only savings,
-                                    rewards and special promotions from Coupons.com. Enter in an email and a password or
-                                    sign up with Facebook.</div>
-                                <div class="wrap-form-reg clearfix">
-                                    <form action="#">
-                                        <div class="left-form">
-                                            <label class="wrap-txt" for="sys_email_reg">
-                                                <input class="input-txt" id="sys_email_reg" type="email"
-                                                    placeholder="you@mail.com" />
-                                            </label>
-                                            <label class="wrap-txt" for="sys_pass_reg">
-                                                <input class="input-txt" id="sys_pass_reg" type="password"
-                                                    placeholder="password please!" />
-                                            </label>
-                                            <label class="wrap-check" for="sys_chk_news_reg">
-                                                <input id="sys_chk_news_reg" class="input-chk" type="checkbox" /> Send
-                                                me the weekly Couponday.com’s offers.
-                                                <i class="icon iUncheck"></i>
-                                            </label>
-                                            <label class="wrap-check" for="sys_chk_agree">
-                                                <input id="sys_chk_agree" class="input-chk" type="checkbox" /> I agree
-                                                to the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
-                                                <i class="icon iUncheck"></i>
-                                            </label>
-                                        </div>
-                                        <div class="right-connect">
-                                            <button class="btn-flat yellow btn-submit-reg" type="submit">Create an
-                                                account</button>
-                                            <div class="sep-connect">
-                                                <span>Or</span>
-                                            </div>
-                                            <div class="grp-connect">
-                                                <p class="rs">Sign up using your account on:</p>
-                                                <a class="btn-flat fb" href="#">Facebook</a>
-                                                <a class="btn-flat gg" href="#">Google</a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <p class="rs wrap-link-back">
-                                    <a id="sys_link_login_panel" href="login.html" class="link-back">
-                                        <i class="pick-r"></i>
-                                        Back to login
-                                    </a>
-                                </p>
-                            </div><!--end: Register panel -->
+
                         </div>
                         <div id="sys_paging_state" class="paging-state">
                             <i class="active"></i>
@@ -179,46 +132,45 @@
                         <i id="sys_close_login_popup" class="icon iClose close-popop"></i>
                     </div>
                 </div>
+
             </header><!--end: header.mod-header -->
+
             <nav id="mp-menu" class="mp-menu alternate-menu">
                 <div class="mp-level">
                     <h2>Menu</h2>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="coupon.html">Coupons</a></li>
-                        <li class="has-sub">
-                            <a href="coupon-code.html">Coupons Code</a>
-                            <div class="mp-level">
-                                <h2>Coupons Code</h2>
-                                <a class="mp-back" href="#">back</a>
-                                <ul>
-                                    <li><a href="coupon-code.html">Coupons Code 1</a></li>
-                                    <li><a href="coupon-code-2.html">Coupons Code 2</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="has-sub">
-                            <a href="brand-list.html">Brands</a>
-                            <div class="mp-level">
-                                <h2>Brands</h2>
-                                <a class="mp-back" href="#">back</a>
-                                <ul>
-                                    <li><a href="brand-detail-1.html">Brand Detail 1</a></li>
-                                    <li><a href="brand-detail-2.html">Brand Detail 2</a></li>
-                                    <li><a href="brand-detail-3.html">Brand Detail 3</a></li>
-                                    <li><a href="brand-detail-4.html">Brand Detail 4</a></li>
-                                    <li><a href="brand-detail-5.html">Brand Detail 5</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="my-coupon.html">My coupons(12)</a></li>
-                        <li><a href="login.html">Login</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/entertainment">Entertainment</a></li>
+                        <li><a href="/apparel">Apparel & Clothing</a></li>
+                        <li><a href="/travel">Travel</a></li>
+                        <li><a href="/categories">All Categories</a></li>
                     </ul>
                 </div>
             </nav><!--end: .mp-menu -->
 
             @yield('homeContent')
+
+            <div class="grid_frame page-content">
+                <div class="container_grid">
+                    <div class="mod-email-newsletter clearfix">
+                        <div class="grid_12">
+                            <div class="wrap-form clearfix">
+                                <div class="left-lbl">
+                                    <div class="big-lbl">newsletter</div>
+                                    <div class="sml-lbl">Don't miss a chance!</div>
+                                </div>
+                                <div class="wrap-email">
+                                    <label for="sys_email_newsletter">
+                                        <input type="email" id="sys_email_newsletter"
+                                            placeholder="Enter your email here" />
+                                    </label>
+                                </div>
+                                <button class="btn btn-my btn-submit-email" type="submit">SUBSCRIBE NOW</button>
+                            </div>
+                        </div>
+                    </div><!--end: .mod-email-newsletter-->
+                </div>
+            </div>
 
 
             <footer class="mod-footer">
@@ -272,18 +224,18 @@
                                     <h3 class="title-block" style="color:white;">Latest blog</h3>
                                     <div class="block-content">
                                         <div class="entry-item flex">
-                                            <a class="thumb-left" href="#">
+                                            <a class="thumb-left">
                                                 <img src="{{ asset('frontend/images/ex/04-15.jpg')}}" alt="$TITLE" />
                                             </a>
-                                            <div class="flex-body"><a href="#">Lorem ipsum dolor sit amet, consectetuer
-                                                    adipiscing eli</a></div>
+                                            <div class="flex-body"><a>In today’s digital-first world, personal branding
+                                                    is more important.</a></div>
                                         </div>
                                         <div class="entry-item flex">
-                                            <a class="thumb-left" href="#">
+                                            <a class="thumb-left">
                                                 <img src="{{ asset('frontend/images/ex/04-16.jpg')}}" alt="$TITLE" />
                                             </a>
-                                            <div class="flex-body"><a href="#">Ut wisi enim ad minim veniam, quis
-                                                    nostrud</a></div>
+                                            <div class="flex-body"><a>Let’s start with the positives. Social media is a
+                                                    powerful tool</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -291,6 +243,7 @@
                         </div>
                     </div>
                 </div><!--end: .foot-top-->
+
                 <div class="foot-copyright">
                     <div class="grid_frame">
                         <div class="container_grid clearfix">
@@ -302,7 +255,8 @@
                                 <a href="#">Contact</a>
                             </div>
                             <div class="copyright">
-                                © Copyrights {{ date('Y') }} <a href="/">{{ $site_content->site_title ?? 'Not Found' }} </a>All Rights Reserved.
+                                © Copyrights {{ date('Y') }} <a href="/">{{ $site_content->site_title ?? 'Not Found' }}
+                                </a>All Rights Reserved.
                             </div>
                         </div>
                     </div>

@@ -21,7 +21,6 @@ class HomeController extends Controller
 
         $categories = DB::select("select * from categories LIMIT 6");
         $stores = DB::select("select * from stores LIMIT 6");
-
         $site_content = DB::table('site_contents')->first();
 
         return view('pages.frontend.home', compact('top_blogs', 'site_blogs', 'latest_blogs', 'blogs', 'categories', 'stores', 'coupons', 'site_content'));
@@ -49,7 +48,6 @@ class HomeController extends Controller
 
         ksort($groupedStores);
 
-
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.stores', compact('groupedStores', 'site_content'));
     }
@@ -59,7 +57,6 @@ class HomeController extends Controller
     {
         $stores = DB::select("select * from stores LIMIT 6");
         $blogs = DB::select("select * from blogs");
-
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.blogs', compact('stores', 'site_content', 'blogs'));
     }
@@ -71,8 +68,6 @@ class HomeController extends Controller
 
         $site_blogs = DB::select("select * from blogs LIMIT 6");
         $blogs = DB::select("select * from blogs LIMIT 4");
-
-
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.entertainment', compact('site_blogs', 'site_content', 'blogs'));
     }
@@ -82,8 +77,6 @@ class HomeController extends Controller
 
         $site_blogs = DB::select("select * from blogs LIMIT 6");
         $blogs = DB::select("select * from blogs LIMIT 4");
-
-
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.apparel', compact('site_blogs', 'site_content', 'blogs'));
     }
@@ -94,8 +87,6 @@ class HomeController extends Controller
 
         $site_blogs = DB::select("select * from blogs LIMIT 6");
         $blogs = DB::select("select * from blogs LIMIT 4");
-
-
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.travel', compact('site_blogs', 'site_content', 'blogs'));
     }
@@ -104,8 +95,6 @@ class HomeController extends Controller
     public function Categories()
     {
         $categories = DB::select("select * from categories");
-
-
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.categories', compact('categories', 'site_content'));
     }
@@ -131,6 +120,7 @@ class HomeController extends Controller
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.store_profile', compact('store', 'coupons', 'site_content'));
     }
+
 
     public function BlogDetail($slug)
     {

@@ -2,7 +2,8 @@
 @extends('layouts.adminlayout')
 
 @section('homeContent')
-        <!-- Large modal -->
+
+        <!-- Edit modal -->
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
@@ -21,14 +22,11 @@
 
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-12">
-
                     <div class="">
-
                         <div class="">
 
                        <input required type="hidden" id="e_id" name="e_id" class="form-control" />
  
-                           
                    <div class="row">
                                     <div class="col-12 col-md-12 col-lg-6">
                                         <div class="form-group">
@@ -93,7 +91,8 @@
           </div>
         </div>
 
-<!-- <h1>All Categories</h1> -->
+        
+<!-- <h1>All Banners</h1> -->
         <section class="section">
           <div class="section-body">
 
@@ -102,10 +101,7 @@
                 <div class="card card-primary">
                   <div class="card-header">
                     <h4>All Banners</h4>
-                
                   </div>
-                   
-                  
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-striped" id="table-2">
@@ -120,8 +116,6 @@
                           </tr>
                         </thead>
                         <tbody>
-                          
-                          
                           
 @php
     $count = 1;
@@ -241,7 +235,6 @@
         });
 
     });
-
     
 </script>
 @endsection
