@@ -253,8 +253,6 @@ Sortable.create(el, {
           
     $(document).ready(function () {
 
-
-
             // Sort functionality
       $(document).on('click', '.sort-btn', function () {
     var storeId = $(this).data('id');
@@ -311,8 +309,6 @@ $('#saveSortBtn').click(function () {
         }
     });
 });
-
-
 
 
             // Edit functionality

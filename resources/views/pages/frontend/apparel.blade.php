@@ -32,7 +32,8 @@
                                         </div>
                                         <div class="flex-body">
                                             <p class="art-title rs"><a
-                                                    href="{{ url('/blog-detail/' . $data->slug) }}">{{  $data->blog_title }} </a>
+                                                    href="{{ url('/blog-detail/' . $data->slug) }}">{{  $data->blog_title }}
+                                                </a>
                                             </p>
                                             <p class="rs art-desc" style="font-weight: 1px !Important;">
                                                 {!! collect(explode('</p>', $data->blog_content))->take(1)->implode('</p>') !!}

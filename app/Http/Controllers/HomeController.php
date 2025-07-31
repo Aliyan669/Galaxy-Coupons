@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,18 +13,15 @@ class HomeController extends Controller
     FROM coupons
     LEFT JOIN stores ON coupons.store_id = stores.id LIMIT 8
 ');
-        $top_blogs = DB::select("select * from blogs LIMIT 2");
-        $site_blogs = DB::select("select * from blogs LIMIT 3");
-        $latest_blogs = DB::select("select * from blogs LIMIT 6");
+        $top_blogs = DB::select("SELECT * FROM blogs ORDER BY created_at DESC LIMIT 2");
+        $site_blogs = DB::select("select * from blogs ORDER BY blog_title ASC LIMIT 3");
+        $latest_blogs = DB::select("SELECT * FROM blogs ORDER BY created_at DESC LIMIT 6");
         $blogs = DB::select("select * from blogs LIMIT 4");
-
-        $categories = DB::select("select * from categories LIMIT 6");
-        $stores = DB::select("select * from stores LIMIT 6");
+        $new_blogs = DB::select("select * from blogs ORDER BY blog_title ASC LIMIT 6");
         $site_content = DB::table('site_contents')->first();
 
-        return view('pages.frontend.home', compact('top_blogs', 'site_blogs', 'latest_blogs', 'blogs', 'categories', 'stores', 'coupons', 'site_content'));
+        return view('pages.frontend.home', compact('top_blogs', 'site_blogs', 'latest_blogs', 'blogs', 'new_blogs', 'coupons', 'site_content'));
     }
-
 
 
     public function Stores()
@@ -52,31 +48,38 @@ class HomeController extends Controller
         return view('pages.frontend.stores', compact('groupedStores', 'site_content'));
     }
 
-
-    public function Blogs()
-    {
-        $stores = DB::select("select * from stores LIMIT 6");
-        $blogs = DB::select("select * from blogs");
-        $site_content = DB::table('site_contents')->first();
-        return view('pages.frontend.blogs', compact('stores', 'site_content', 'blogs'));
-    }
-
+    // public function Blogs()
+    // {
+    //     $stores = DB::select("select * from stores LIMIT 6");
+    //     $blogs = DB::select("select * from blogs");
+    //     $site_content = DB::table('site_contents')->first();
+    //     return view('pages.frontend.blogs', compact('stores', 'site_content', 'blogs'));
+    // }
 
 
     public function Entertainment()
     {
-
-        $site_blogs = DB::select("select * from blogs LIMIT 6");
-        $blogs = DB::select("select * from blogs LIMIT 4");
+        $site_blogs = DB::select("SELECT * FROM blogs ORDER BY created_at DESC LIMIT 5");
+        $blogs = DB::table('blogs')
+            ->join('categories', 'blogs.cate_id', '=', 'categories.id')
+            ->where('categories.cate_name', 'Entertainment')
+            ->select('blogs.*', 'categories.cate_name as cate_name')
+            ->orderBy('blogs.created_at', 'DESC')
+            ->get();
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.entertainment', compact('site_blogs', 'site_content', 'blogs'));
     }
 
+
     public function Apparel()
     {
-
-        $site_blogs = DB::select("select * from blogs LIMIT 6");
-        $blogs = DB::select("select * from blogs LIMIT 4");
+        $site_blogs = DB::select("SELECT * FROM blogs ORDER BY created_at DESC LIMIT 5");
+        $blogs = DB::table('blogs')
+            ->join('categories', 'blogs.cate_id', '=', 'categories.id')
+            ->where('categories.cate_name', 'Apparel & Clothing')
+            ->select('blogs.*', 'categories.cate_name as cate_name')
+            ->orderBy('blogs.created_at', 'DESC')
+            ->get();
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.apparel', compact('site_blogs', 'site_content', 'blogs'));
     }
@@ -85,8 +88,14 @@ class HomeController extends Controller
     public function Travel()
     {
 
-        $site_blogs = DB::select("select * from blogs LIMIT 6");
-        $blogs = DB::select("select * from blogs LIMIT 4");
+        $site_blogs = DB::select("SELECT * FROM blogs ORDER BY created_at DESC LIMIT 4");
+        $site_blogs = DB::select("SELECT * FROM blogs ORDER BY created_at DESC LIMIT 5");
+        $blogs = DB::table('blogs')
+            ->join('categories', 'blogs.cate_id', '=', 'categories.id')
+            ->where('categories.cate_name', 'Travel')
+            ->select('blogs.*', 'categories.cate_name as cate_name')
+            ->orderBy('blogs.created_at', 'DESC')
+            ->get();
         $site_content = DB::table('site_contents')->first();
         return view('pages.frontend.travel', compact('site_blogs', 'site_content', 'blogs'));
     }
