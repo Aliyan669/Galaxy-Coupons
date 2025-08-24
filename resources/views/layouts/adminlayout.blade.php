@@ -55,7 +55,7 @@
                     <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                             class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
                             <span class="badge headerBadge1">
-                                6 </span> </a>
+                                3 </span> </a>
                         <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                             <div class="dropdown-header">
                                 Messages
@@ -137,13 +137,7 @@
                                     </span> <span class="dropdown-item-desc"> Low disk space. Let's
                                         clean it! <span class="time">17 Hours Ago</span>
                                     </span>
-                                </a> <a href="#" class="dropdown-item"> <span
-                                        class="dropdown-item-icon bg-info text-white"> <i class="fas
-												fa-bell"></i>
-                                    </span> <span class="dropdown-item-desc"> Welcome to Otika
-                                        template! <span class="time">Yesterday</span>
-                                    </span>
-                                </a>
+                                </a> 
                             </div>
                             <div class="dropdown-footer text-center">
                                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>
@@ -152,10 +146,10 @@
                     </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image"
-                                src="{{ asset('backend/assets/img/user.png')}}" class="user-img-radious-style"> <span
+                                src="{{ asset('backend/images/uploads/' . $site_content->favicon_logo) }}" class="user-img-radious-style"> <span
                                 class="d-sm-none d-lg-inline-block"></span></a>
                         <div class="dropdown-menu dropdown-menu-right pullDown">
-                            <div class="dropdown-title">Hello Galaxy Coupon</div>
+                            <div class="dropdown-title">Hello Deal Spockets</div>
                             <a class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profile
                             </a> <a class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
@@ -176,9 +170,8 @@
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
                         <a href="/admin">
-                            <img alt="image" src="{{ asset('backend/assets/img/galaxy-logo.png')}}"
+                            <img alt="image" src="{{ asset('backend/assets/img/backend_logo.png')}}"
                                 class="header-logo" />
-                            <!-- <span class="logo-name font-15">Galaxy Coupons</span> -->
                         </a>
                     </div>
                     <ul class="sidebar-menu">

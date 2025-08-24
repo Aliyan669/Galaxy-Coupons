@@ -40,13 +40,15 @@
                                 <div class="list-follow">
 
                                     @foreach($stores as $store)
-                                        <div style="width: 150px; text-align: center; margin: 10px 0px; display: inline-block;">
-                                            <a href="{{ url('/store-profile/' . $store->slug) }}" style="text-decoration: none; ">
+                                        <div
+                                            style="width: 100%; max-width: 160px; text-align: center; margin: 10px auto; display: inline-block; vertical-align: top;">
+                                            <a href="{{ url('/store-profile/' . $store->slug) }}"
+                                                style="text-decoration: none; display: block;">
                                                 <img src="{{ asset('backend/images/stores/' . $store->store_logo) }}"
                                                     alt="{{ $store->store_name }}"
-                                                    style="width: 140px; height: 140px; object-fit: contain; display: block; margin: 0 auto 8px auto;">
-                                                {{ $store->store_name }}
-
+                                                    style="width: 100%; max-width: 140px; height: auto; aspect-ratio: 1/1; object-fit: contain; display: block; margin: 0 auto 8px auto;">
+                                                <span
+                                                    style="font-size: 14px; display: block; word-wrap: break-word;">{{ $store->store_name }}</span>
                                             </a>
                                         </div>
                                     @endforeach

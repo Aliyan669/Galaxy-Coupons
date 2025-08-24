@@ -5,122 +5,78 @@
     <!-- <div class="top-area"> -->
 
     <!-- <div class="mod-head-slide">
-                            <div class="">
+                                <div class="">
 
-                                <div class="wrap-slide">
-                                    <p class="ta-c"><img src="images/ajax-loader.gif" alt="loading"></p>
-                                    <div id="sys_head_slide" class="head-slide flexslider">
-                                        <ul class="slides">
-                                            <li>
-                                                <img src="{{ asset('frontend/images/ex/banner_1.png')}}" alt="" />
-                                            </li>
-                                        </ul>
+                                    <div class="wrap-slide">
+                                        <p class="ta-c"><img src="images/ajax-loader.gif" alt="loading"></p>
+                                        <div id="sys_head_slide" class="head-slide flexslider">
+                                            <ul class="slides">
+                                                <li>
+                                                    <img src="{{ asset('frontend/images/ex/banner_1.png')}}" alt="" />
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </div>
-                        </div> -->
+                                </div>
+                            </div> -->
 
     <!-- </div> -->
 
-    <!-- <div id="sys_mod_filter" class="mod-filter">
-                            <div class="grid_frame">
-                                <div class="container_grid clearfix">
-                                    <div class="grid_12">
-                                        <div class="lbl-search">
-                                            <input class="txt-search" id="sys_txt_search" type="search" placeholder="Search" />
-                                            <input type="submit" class="btn-search" value="" />
-                                        </div>
-                                        <div class="select-cate">
-                                            <div id="sys_selected_val" class="show-val">
-                                                <span data-cate-id="0">All type</span>
-                                                <i class="pick-down"></i>
-                                            </div>
-                                            <div id="sys_list_dd_cate" class="dropdown-cate">
-                                                <div class="first-lbl">All Categories</div>
-                                                <div class="wrap-list-cate clearfix">
-                                                    <a href="#" data-cate-id="1">Baby &amp; Toddler</a>
-                                                    <a href="#" data-cate-id="2">Automotive </a>
-                                                    <a href="#" data-cate-id="3">Beverages</a>
-                                                    <a href="#" data-cate-id="4">Books &amp; Magazines</a>
-                                                    <a href="#" data-cate-id="5">Foods </a>
-                                                    <a href="#" data-cate-id="6">Health Care</a>
-                                                    <a href="#" data-cate-id="7">Home Entertainment</a>
-                                                    <a href="#" data-cate-id="8">Personal Care </a>
-                                                    <a href="#" data-cate-id="9">Pet Care </a>
-                                                    <a href="#" data-cate-id="10">Professional Services </a>
-                                                    <a href="#" data-cate-id="11">Toys and Games</a>
-                                                    <a href="#" data-cate-id="12">Coupon Codes</a>
-                                                    <a href="#" data-cate-id="13">Recipes</a>
-                                                    <a href="#" data-cate-id="14">Household </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="range-days-left">
-                                            <span class="lbl-day">Days left</span>
-                                            <span id="sys_min_day" class="min-day"></span>
-                                            <div id="sys_filter_days_left" class="filter-days"></div>
-                                            <span id="sys_max_day" class="max-day"></span>
-                                        </div>
-                                        <input id="sys_apply_filter" class="btn btn-my type-1 btn-apply-filter" type="button"
-                                            value="Apply Filter">
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-    <!--end: .mod-filter -->
-
-
-
     <div class="grid_frame page-content">
 
-        <div class="mod-brands block clearfix" style="margin:5px 0px;">
+<div class="mod-brands block clearfix" style="margin:5px 0px;">
+    <div class="grid_12">
+        <div class="block-content list-brand" style="display: flex; flex-wrap: wrap; gap: 10px;">
+            @foreach ($top_blogs as $data)
+                <div style="
+                    display: flex;
+                    flex-direction: row;
+                    background: #fff;
+                    padding: 12px;
+                    border-radius: 2px;
+                    box-sizing: border-box;
+                    flex: 1 1 calc(50% - 10px); 
+                    max-width: 100%;
+                ">
+                    <!-- Image Section -->
+                    <div style="
+                        flex-shrink: 0;
+                        width: 100px;
+                        height: 100px;
+                        overflow: hidden;
+                        border-radius: 2px;
+                        margin-right: 15px;
+                    ">
+                        <img src="{{ asset('backend/images/blogs') }}/{{ $data->blog_logo }}" alt="Blog Image"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
 
-            <!-- <div class="grid_12">
-                                    <h3 class="title-block has-link" style="text-align:center;">
-                                        Popular Categories
-                                        <a href="/categories" class="link-right">See all <i class="pick-right"></i></a>
-                                    </h3>
-                                </div> -->
-            <div class="grid_12">
-                <div class="block-content list-brand" style="display: flex; flex-wrap: wrap; gap: 10px;">
-
-                    @foreach ($top_blogs as $data)
-                        <div style="display: flex; width: 47%; background: #fff; padding: 12px; border-radius: 2px;">
-
-                            <!-- Image Section -->
-                            <div
-                                style="flex-shrink: 0; width: 100px; height: 100px; overflow: hidden; border-radius: 2px; margin-right: 15px;">
-                                <img src="{{ asset('backend/images/blogs') }}/{{ $data->blog_logo }}" alt="Blog Image"
-                                    style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-
-                            <!-- Text Section -->
-                            <div style="flex-grow: 1 ">
-                                <p class="art-title rs" style="font-size:15px"><a
-                                        href="{{ url('/blog-detail/' . $data->slug) }}"
-                                        style="color:#3d5366; ">{{  $data->blog_title }} </a></p>
-                                <p style="font-size: 11px; margin: 2px 0px;">
-                                    {!! Str::words(strip_tags($data->blog_content), 30, '...') !!}
-                                </p>
-                                <a style="display: inline-block;  font-size: 12px; color: #3d5366; text-decoration: none;"
-                                    href="{{ url('/blog-detail/' . $data->slug) }}">Read
-                                    More</a>
-                            </div>
-
-                        </div>
-                    @endforeach
-
+                    <!-- Text Section -->
+                    <div style="flex-grow: 1;">
+                        <p class="art-title rs" style="font-size:15px; margin: 0;">
+                            <a href="{{ url('/blog-detail/' . $data->slug) }}" style="color:#3d5366;">
+                                {{ $data->blog_title }}
+                            </a>
+                        </p>
+                        <p style="font-size: 11px; margin: 2px 0px;">
+                            {!! Str::words(strip_tags($data->blog_content), 30, '...') !!}
+                        </p>
+                        <a style="display: inline-block; font-size: 12px; color: #3d5366; text-decoration: none;"
+                            href="{{ url('/blog-detail/' . $data->slug) }}">
+                            Read More
+                        </a>
+                    </div>
                 </div>
-            </div>
-
+            @endforeach
         </div>
+    </div>
+</div>
+
 
         <div class="container_grid">
 
-
-
-            <div class="layout-2cols  clearfix">
+                <div class="layout-2cols  clearfix">
 
                 <div class="grid_8 content">
                     <div class="mod-list-article">
@@ -132,8 +88,10 @@
                                     <div class="flex">
                                         <div class="thumb-left wrap-date-post">
                                             <div class="date">
-                                                <span class="day">12</span>
-                                                <span class="my">May / 2025</span>
+                                                <span
+                                                    class="day">{{ \Carbon\Carbon::parse($data->created_at)->format('d') }}</span>
+                                                <span
+                                                    class="my">{{ \Carbon\Carbon::parse($data->created_at)->format('M / Y') }}</span>
                                             </div>
                                             <a href="{{ url('/blog-detail/' . $data->slug) }}" class="btn-more">Read more</a>
                                         </div>
@@ -158,7 +116,6 @@
                 <div class="grid_4 sidebar">
 
                     <div class="mod-simple-coupon block">
-
 
                         <!-- TradingView Widget BEGIN -->
                         <div class="tradingview-widget-container" style="margin-bottom: 30px;">
@@ -260,8 +217,6 @@
 
                         </div>
 
-
-
                     </div><!--end: .mod-simple-coupon -->
                     <div class="mod-popular-tag block">
                         <h3 class="title-block">Popular Tag</h3>
@@ -269,7 +224,7 @@
                             <a class="btn btn-gray type-tag">Fashion</a>
                             <a class="btn btn-gray type-tag">Beauty</a>
                             <a class="btn btn-gray type-tag">Sports</a>
-                            <a class="btn btn-gray type-tag">Coupon</a>
+                            <a class="btn btn-gray type-tag">Apparel</a>
                             <a class="btn btn-gray type-tag">Saving</a>
                             <a class="btn btn-gray type-tag">Offers</a>
                             <a class="btn btn-gray type-tag">Brands</a>
@@ -282,11 +237,11 @@
             <div class="mod-brands block clearfix">
 
                 <!-- <div class="grid_12">
-                                    <h3 class="title-block has-link" style="text-align:center;">
-                                        Popular Categories
-                                        <a href="/categories" class="link-right">See all <i class="pick-right"></i></a>
-                                    </h3>
-                                </div> -->
+                                        <h3 class="title-block has-link" style="text-align:center;">
+                                            Popular Categories
+                                            <a href="/categories" class="link-right">See all <i class="pick-right"></i></a>
+                                        </h3>
+                                    </div> -->
                 <div class="grid_12">
                     <div class="block-content list-brand clearfix">
 
@@ -325,3 +280,4 @@
     </div>
 
 @endsection
+

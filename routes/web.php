@@ -15,7 +15,7 @@ use App\Http\Controllers\AdminController;
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', "Home");
     Route::get('/store', "Stores");
-    Route::get('/blogs', "Blogs");
+    // Route::get('/blogs', "Blogs");
     Route::get('/blog-detail/{slug}', "BlogDetail");
     Route::get('/entertainment', "Entertainment");
     Route::get('/apparel', "Apparel");

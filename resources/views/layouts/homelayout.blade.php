@@ -20,22 +20,14 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style-gray.css')}}">
     <link rel="shortcut icon" href="{{ asset('backend/images/uploads/' . $site_content->favicon_logo) }}"
         type="image/x-icon">
-    <!--[if IE 9]>
-    <link rel="stylesheet" href="css/ie9.css"/>
-    <![endif]-->
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="css/ie8.css"/>
-    <![endif]-->
+
 
     <link rel="stylesheet" href="{{ asset('frontend/css/res-menu.css')}}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css')}}" />
-    <!--[if lte IE 8]>
-        <script type="text/javascript" src="js/html5.js"></script>
-    <![endif]-->
 
 </head>
 
-<body class="gray"><!--<div class="alert_w_p_u"></div>-->
+<body class="gray">
     <div class="container-page">
         <div class="mp-pusher" id="mp-pusher">
             <header class="mod-header">
@@ -45,7 +37,7 @@
                             <div class="header-content clearfix">
                                 <h1 id="logo" class="rs">
                                     <a href="/">
-                                        <img style="max-width:50%"
+                                        <img style="max-height:30px; display:block;"
                                             src="{{ asset('backend/images/uploads/' . $site_content->site_logo) }}"
                                             alt="$SITE_NAME" />
                                     </a>
@@ -79,60 +71,6 @@
                         </div>
                     </div>
                 </div>
-                <div id="sys_pop_login" class="pop-login">
-                    <div class="viewport-pop">
-                        <div class="transport-viewer clearfix">
-                            <div class="mod-register">
-                                <h3 class="rs title-mod">Hello pretty! Welcome to Couponday.com</h3>
-                                <div class="wrap-form-reg clearfix">
-                                    <form action="#">
-                                        <div class="left-form">
-                                            <label class="wrap-txt" for="sys_email">
-                                                <input class="input-txt" id="sys_email" type="email"
-                                                    placeholder="you@mail.com">
-                                            </label>
-                                            <label class="wrap-txt" for="sys_pass">
-                                                <input class="input-txt" id="sys_pass" type="password"
-                                                    placeholder="password please!">
-                                            </label>
-                                            <label class="wrap-check" for="sys_chk_news">
-                                                <input id="sys_chk_news" class="input-chk" type="checkbox"> Remember me
-                                                <i class="icon iUncheck"></i>
-                                                <a class="lost-pass" href="#">Forgot password ?</a>
-                                            </label>
-                                            <div class="wrap-login-btn">
-                                                <button class="btn-flat gr btn-submit-reg" type="submit">Login</button>
-                                                <div class="sep-connect">
-                                                    <span>Or</span>
-                                                </div>
-                                                <div class="grp-connect">
-                                                    <a class="btn-flat fb" href="#">Facebook</a>
-                                                    <a class="btn-flat gg" href="#">Google</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="right-create-acc">
-                                            <img class="account" src="images/reg-account.png" alt="Couponday.com">
-                                            <p class="lbl-dung-lo rs">Not a member? Don’t worry</p>
-                                            <a id="sys_link_reg_panel" href="register.html"
-                                                class="btn-flat yellow btn-submit-reg">Create an account</a>
-                                            <div id="sys_warning_sms" class="warning-sms"
-                                                data-warning-txt="No spam guarantee,No disturb,Promotion News"></div>
-                                        </div>
-                                    </form>
-                                    <i class="line-sep"></i>
-                                </div>
-                            </div><!--end: Login panel -->
-
-                        </div>
-                        <div id="sys_paging_state" class="paging-state">
-                            <i class="active"></i>
-                            <i></i>
-                        </div>
-                        <i id="sys_close_login_popup" class="icon iClose close-popop"></i>
-                    </div>
-                </div>
-
             </header><!--end: header.mod-header -->
 
             <nav id="mp-menu" class="mp-menu alternate-menu">
@@ -255,7 +193,7 @@
                                 <a href="#">Contact</a>
                             </div>
                             <div class="copyright">
-                                © Copyrights {{ date('Y') }} <a href="/">{{ $site_content->site_title ?? 'Not Found' }}
+                                ©Copyrights {{ date('Y') }} <a href="/">{{ $site_content->site_title ?? 'Not Found' }}
                                 </a>All Rights Reserved.
                             </div>
                         </div>
@@ -274,16 +212,7 @@
     <script type="text/javascript" src="{{ asset('frontend/js/modernizr.custom.js')}}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/classie.js')}}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/mlpushmenu.js')}}"></script>
-
     <script type="text/javascript" src="{{ asset('frontend/js/script.js')}}"></script>
-
-    <!--[if lte IE 9]>
-<script type="text/javascript" src="js/jquery.placeholder.js"></script>
-<script type="text/javascript" src="js/create.placeholder.js"></script>
-<![endif]-->
-    <!--[if lte IE 8]>
-<script type="text/javascript" src="js/ie8.js"></script>
-<![endif]-->
 
 </body>
 

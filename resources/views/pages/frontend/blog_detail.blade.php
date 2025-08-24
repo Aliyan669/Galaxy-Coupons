@@ -28,9 +28,11 @@
                                     <p style="color:#3d5366; " class="blog-title" >{{ $blog_detail->blog_title }} </p>
                                 </div>
                                 <div class="right-date">
-                                    <span class="day">12</span>
-                                    <span class="my">May / 2013</span>
+                                   <span class="day">{{ \Carbon\Carbon::parse($blog_detail->created_at)->format('d') }}</span>
+                                    <span class="my">{{ \Carbon\Carbon::parse($blog_detail->created_at)->format('M / Y') }}</span>
+ 
                                 </div>
+                                
                             </div>
                             <div class="blog-full-content">
                                <p>{!! $blog_detail->blog_content !!}</p>
@@ -39,7 +41,7 @@
                                 <span class="btn btn-gray type-tag tag-lbl">Tag</span>
                             <a class="btn btn-gray type-tag">Beauty</a>
                             <a class="btn btn-gray type-tag">Sports</a>
-                            <a class="btn btn-gray type-tag">Coupon</a>
+                            <a class="btn btn-gray type-tag">Apparel</a>
                             <a class="btn btn-gray type-tag">Saving</a>
                             <a class="btn btn-gray type-tag">Offers</a>
                             <a class="btn btn-gray type-tag">Brands</a>
@@ -61,12 +63,12 @@
                                                     src="{{ asset('backend/images/blogs')}}/{{ $data->blog_logo }}"
                                                     alt="$BRAND_TITLE"> </a>
 
-                                            <p style="text-align:left; padding-left: 5px; font-size:15px"><a
+                                            <p style="text-align:left; padding-left: 5px; font-size:15px"><a href="{{ url('/blog-detail/' . $data->slug) }}"
                                                     style="color:#3d5366; ">{{  $data->blog_title }} </a></p>
                                             <p style="text-align:left; padding: 0px 5px; font-weight: 100; font-size:12px; ">
                                                 {!! Str::words(strip_tags($data->blog_content), 20, '...') !!}
 
-                                                <a
+                                                <a href="{{ url('/blog-detail/' . $data->slug) }}"
                                                     style="display: inline-block;  font-size: 12px; color: #3d5366; text-decoration: none;">Read
                                                     More</a>
                                             </p>

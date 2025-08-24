@@ -28,8 +28,8 @@
                                     <div class="flex">
                                         <div class="thumb-left wrap-date-post">
                                             <div class="date">
-                                                <span class="day">12</span>
-                                                <span class="my">May / 2025</span>
+                                                <span class="day">{{ \Carbon\Carbon::parse($data->created_at)->format('d') }}</span>
+                                                <span class="my">{{ \Carbon\Carbon::parse($data->created_at)->format('M / Y') }}</span>
                                             </div>
                                             <a href="{{ url('/blog-detail/' . $data->slug) }}" class="btn-more">Read more</a>
                                         </div>
@@ -93,7 +93,7 @@
                             <a class="btn btn-gray type-tag">Fashion</a>
                             <a class="btn btn-gray type-tag">Beauty</a>
                             <a class="btn btn-gray type-tag">Sports</a>
-                            <a class="btn btn-gray type-tag">Coupon</a>
+                            <a class="btn btn-gray type-tag">Apparel</a>
                             <a class="btn btn-gray type-tag">Saving</a>
                             <a class="btn btn-gray type-tag">Offers</a>
                             <a class="btn btn-gray type-tag">Brands</a>

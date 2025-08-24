@@ -29,7 +29,7 @@ class CouponController extends BaseAdminController
     public function create()
     {
         $site_content = DB::table('site_contents')->first();
-        $store = DB::table('stores')->select('store_name', 'id')->get();
+        $store = DB::table('stores')->select('store_name', 'id')->orderBy('created_at', 'desc')->get();
         return view('pages.backend.addCoupon', compact('store', 'site_content'));
     }
 

@@ -8,13 +8,16 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-      public function showLogin()
+    public function showLogin()
     {
-        return view('auth.login');
+        $site_content = DB::table('site_contents')->first();
+        return view('auth.login', compact('site_content'));
+
     }
 
     public function login(Request $request)
     {
+
         $admin = DB::table('admin_auth')->where('email', $request->email)->first();
 
         if ($admin && Hash::check($request->password, $admin->password)) {
@@ -30,8 +33,5 @@ class AuthController extends Controller
         Session::forget('admin_logged_in');
         return redirect('/admin/login');
     }
-
-
-
 
 }
