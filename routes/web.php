@@ -20,9 +20,10 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/entertainment', "Entertainment");
     Route::get('/apparel', "Apparel");
     Route::get('/travel', "Travel");
-
     Route::get('/categories', "Categories");
     Route::get('/store-profile/{slug}', "StoreProfile");
+    Route::get('/privacy-policy', "PrivacyPolicy");
+    Route::get('/terms-of-condition', "TermsOfCondition");
 });
 
 Route::get('/admin', [AdminController::class, "Home"]);

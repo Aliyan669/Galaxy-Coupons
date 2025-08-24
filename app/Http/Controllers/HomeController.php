@@ -141,4 +141,18 @@ class HomeController extends Controller
         }
         return view('pages.frontend.blog_detail', compact('site_content', 'site_blogs', 'blog_detail'));
     }
+
+
+        public function PrivacyPolicy()
+    {
+
+        $site_content = DB::table('site_contents')->first();
+        return view('pages.frontend.privacy_policy', compact( 'site_content'));
+    }
+            public function TermsOfCondition()
+    {
+
+        $site_content = DB::table('site_contents')->first();
+        return view('pages.frontend.terms_of_condition', compact( 'site_content'));
+    }
 }

@@ -145,15 +145,10 @@
                             </div><!--end: Follow us -->
                             <div class="grid_3">
                                 <div class="block intro-video">
-                                    <h3 class="title-block" style="color:white;">Intro Video</h3>
+                                    <h3 class="title-block" style="color:white;">Disclaimer</h3>
                                     <div class="block-content">
-                                        <div class="wrap-video" id="sys_wrap_video">
-                                            <div class="lightbox-video">
-                                                <a class="html5lightbox" href="http://player.vimeo.com/video/36932496"
-                                                    title=""><i class="btn-play"></i><img
-                                                        src="{{ asset('frontend/images/video-img.png')}}" alt=""></a>
-                                            </div>
-                                        </div>
+                                        We may earn a commission when you use one of our coupons/links to make a
+                                        purchase.
                                     </div>
                                 </div>
                             </div><!--end: Intro Video -->
@@ -186,11 +181,9 @@
                     <div class="grid_frame">
                         <div class="container_grid clearfix">
                             <div class="left-link">
-                                <a href="#">Home</a>
-                                <a href="#">Term of conditions</a>
-                                <a href="#">Privacy</a>
-                                <a href="#">Support</a>
-                                <a href="#">Contact</a>
+                                <a href="/">Home</a>
+                                <a href="/privacy-policy">Privacy Policy</a>
+                                <a href="/terms-of-condition">Term of conditions</a>
                             </div>
                             <div class="copyright">
                                 ©Copyrights {{ date('Y') }} <a href="/">{{ $site_content->site_title ?? 'Not Found' }}
