@@ -3,8 +3,19 @@
 @section('homeContent')
 
 <!-- Custom Coupon Modal -->
+
+<style>
+  @media (max-width: 420px) {
+    #customModalBox {
+      width: 80% !important;
+    }
+  }
+</style>
+
+
 <div id="customModal" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
-  <div style="width:400px; margin:100px auto; background:#fff; padding:20px; border-radius:8px; text-align:center; position:relative;">
+
+  <div id="customModalBox" style="width:400px; margin:100px auto; background:#fff; padding:20px; border-radius:8px; text-align:center; position:relative;">
     <h4 id="modalCouponTitle"  style="margin-bottom:10px; font-size:25px; color: black; "></h4>
 
     <div id="codeSection" style="display:none;  ">

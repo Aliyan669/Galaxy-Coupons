@@ -200,7 +200,7 @@
     <script type="text/javascript" src="{{ asset('frontend/js/jquery.flexslider-min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/jquery.nouislider.js')}}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/jquery.popupcommon.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/js/html5lightbox.js')}}"></script>
+   
     <!--//js for responsive menu-->
     <script type="text/javascript" src="{{ asset('frontend/js/modernizr.custom.js')}}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/classie.js')}}"></script>

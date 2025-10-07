@@ -368,36 +368,44 @@ $('#saveSortBtn').click(function () {
         });
 
               // Delete functionality
-        $(".deleteBtn").click(function () {
-            let storeId = $(this).data("id");
-            console.log(storeId);
+$(document).on('click', '.deleteBtn', function() {
+        let storeId = $(this).data("id");
+        console.log("Clicked ID:", storeId);
+        $("#delete_store_id").val(storeId);
+        $("#deleteModal").modal('show');
+    });
 
-            $("#delete_store_id").val(storeId);
-        });
 
 
 
               // Delete AJAX functionality
-        $('#deleteForm').click(function () {
-            var id = $("#delete_store_id").val();
-            console.log(id);
-            $.ajax({
-                url: '/admin/store/'+id,
-                type: 'DELETE',
-                data: {
-                   _method: 'DELETE' // Laravel requires this method override
-                },
-                success: function (data) {
-                    console.log('deleted');
-                    $('#deleteModal').modal('hide');
-                    location.reload();
-                },
-                error: function (res) {
-                    console.log(res.message);
+            $(document).on('click', '#deleteForm', function() {
+        var id = $("#delete_store_id").val();
+        console.log("Deleting ID:", id);
 
-                }
-            });
+        if (!id) {
+            alert("No store ID found!");
+            return;
+        }
+
+        $.ajax({
+            url: '/admin/store/' + id,
+            type: 'POST', // safer for all environments
+            data: {
+                _method: 'DELETE',
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                console.log('Deleted successfully');
+                $('#deleteModal').modal('hide');
+                location.reload(); // or remove the deleted row dynamically
+            },
+            error: function (xhr) {
+                console.error('Error:', xhr);
+                alert('Delete failed. Check console for details.');
+            }
         });
+    });
 
     });
 

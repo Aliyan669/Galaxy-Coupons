@@ -252,36 +252,49 @@
         });
 
               // Delete functionality
-        $(".deleteBtn").click(function () {
-            let couponId = $(this).data("id");
-            console.log(couponId);
+ $(document).on('click', '.deleteBtn', function() {
+        let couponId = $(this).data("id");
+        console.log("Clicked Coupon ID:", couponId);
 
-            $("#delete_coupon_id").val(couponId);
-        });
+        $("#delete_coupon_id").val(couponId);
+        $("#deleteModal").modal('show');
+    });
 
 
 
               // Delete AJAX functionality
-        $('#deleteForm').click(function () {
-            var id = $("#delete_coupon_id").val();
-            console.log(id);
-            $.ajax({
-                url: '/admin/coupon/'+id,
-                type: 'DELETE',
-                data: {
-                   _method: 'DELETE' // Laravel requires this method override
-                },
-                success: function (data) {
-                    console.log('deleted');
-                    $('#deleteModal').modal('hide');
-                    location.reload();
-                },
-                error: function (res) {
-                    console.log(res.message);
+        $(document).on('click', '#deleteForm', function() {
+        var id = $("#delete_coupon_id").val();
+        console.log("Deleting Coupon ID:", id);
 
-                }
-            });
+        if (!id) {
+            alert("No coupon ID found!");
+            return;
+        }
+
+        $.ajax({
+            url: '/admin/coupon/' + id,
+            type: 'POST', // safer for all environments
+            data: {
+                _method: 'DELETE',
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                console.log('Coupon deleted successfully');
+                $('#deleteModal').modal('hide');
+
+                // Option 1: Reload page (simple)
+                location.reload();
+
+                // Option 2: Remove row dynamically (optional)
+                // $('button[data-id="'+id+'"]').closest('tr').remove();
+            },
+            error: function (xhr) {
+                console.error('Error:', xhr);
+                alert('Delete failed. Please try again.');
+            }
         });
+    });
 
 
         
